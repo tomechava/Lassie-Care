@@ -1,8 +1,30 @@
 {% extends 'base_template.html' %}
 {% block content %}
-<div class="row">
-    <div class="col-12 col-lg-12">
-        <h1>This is the HomePage</h1>
+<div class="row py-5">
+    <div class="col-12 col-lg-11 offset-lg-1">
+        <h2 class="text-lightblue">Daily Tasks</h2>
     </div>
 </div>
+<form method="POST">
+    <div class="row">
+        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+            <label for="txtDailyWalks">Walks today:</label>
+            <input type="number" class="form-control" id="txtDailyWalks" name="txtDailyWalks">
+        </div>
+        <div class="pb-3 col-lg-4 col-12">
+            <label for="txtDailyFood">Foods today:</label>
+            <input type="number" class="form-control" id="txtDailyFood" name="txtDailyFood">
+        </div>
+    </div>
+    <div class="row">
+        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+            <label for="txtDailyWalks">Walks today:</label>
+            <input type="number" class="form-control" id="txtDailyWalks" name="txtDailyWalks">
+        </div>
+        <div class="pb-3 col-lg-4 col-12">
+            <label for="txtDailyFood">Foods today:</label>
+            <input type="number" class="form-control" id="txtDailyFood" name="txtDailyFood">
+        </div>
+    </div>
+</form>
 {% endblock content %}
