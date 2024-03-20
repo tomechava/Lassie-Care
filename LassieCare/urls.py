@@ -20,4 +20,5 @@ from Lassie import views as LassieViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LassieViews.home),
+    path('login', LassieViews.login),
 ]
