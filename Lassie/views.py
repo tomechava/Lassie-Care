@@ -7,3 +7,6 @@ def home(request):
 
 def login(request):
     return render(request, 'login.html')
+
+def pet(request):
+    return render(request, 'pet.html')

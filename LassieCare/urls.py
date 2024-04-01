@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LassieViews.home),
     path('login', LassieViews.login),
+    path('pet', LassieViews.pet),
 ]
+
