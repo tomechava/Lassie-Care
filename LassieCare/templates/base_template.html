@@ -32,7 +32,6 @@
     <meta property="og:title" content="base_template">
     <meta property="og:type" content="website">
 </head>
-<<<<<<< HEAD
 <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="es">
 <header class="u-clearfix u-header u-header" id="sec-21dd">
     <div class="u-clearfix u-sheet u-sheet-1">
@@ -46,58 +45,17 @@
                     <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
             </g></svg>
                 </a>
-=======
-
-<body>
-    <!-- Header -->
-    <nav class="navbar navbar-expand-lg navbar-light shadow">
-        <div class="container d-flex justify-content-between align-items-center">
-
-            <a class="navbar-brand align-self-center" href="/">
-                <h1 class="text-lightblue">Lassie's Care</h1>
-            </a>
-
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="align-self-center" id="templatemo_main_nav">
-                <div class="flex-fill">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-lightblue" href="/">Home <i class="fa-solid fa-house"></i></a>
-                        </li>
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="#">Lassie AI <i class="fa-solid fa-hand-holding-medical"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="/pet">My Pets <i class="fa-solid fa-paw"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="/profile">Profile <i class="fa-solid fa-user"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="/logout">Logout <i class="fa-solid fa-sign-out"></i></a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="/login">Login <i class="fa-solid fa-sign-in"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-lightblue" href="/register">Register <i class="fa-solid fa-user-plus"></i></a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
->>>>>>> 7fde67fbbdb76cabb78dfab6cb5cad40f4181bc9
             </div>
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-custom-font u-nav u-unstyled u-nav-1">
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/" style="padding: 10px 20px;">Home</a></li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="#" style="padding: 10px 20px;">LassieAI</a></li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/asklassiechat" style="padding: 10px 20px;">LassieAI</a></li>
+                    {% if user.is_authenticated %}
                     <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/pet" rel="nofollow" style="padding: 10px 20px;">MyPets</a></li>
-                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/login" style="padding: 10px 20px;">Profile</a></li>
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/profile" style="padding: 10px 20px;">Profile</a></li>
+                    {% else %}
+                    <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-custom-color-2 u-text-custom-color-2 u-text-hover-palette-2-base" href="/login" style="padding: 10px 20px;">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
             <div class="u-custom-menu u-nav-container-collapse">
@@ -106,34 +64,13 @@
                         <div class="u-menu-close"></div>
                         <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
                             <li class="u-nav-item"><a class="u-button-style u-nav-link" href="/">Home <i class="fa-solid fa-house"></i></a></li>
-                            <li class="nav-link"><a class="u-button-style u-nav-link" href="#">LassieAI</a></li>
+                            <li class="nav-link"><a class="u-button-style u-nav-link" href="/asklassiechat">LassieAI</a></li>
+                            {% if user.is_authenticated %}
                             <li class="nav-link"><a class="u-button-style u-nav-link" href="/pet">MyPets</a></li>
-                            <li class="nav-link"><a class="u-button-style u-nav-link" href="/login">Profile</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
-            </div>
-        </nav>
-        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-2">
-            <div class="menu-collapse" style="font-size: 1.5rem;">
-                <a class="u-button-style u-custom-border-radius u-custom-color u-nav-link" href="#">
-                    <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#svg-3253"></use></svg>
-                    <svg class="u-svg-content" version="1.1" id="svg-3253" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
-            </g></svg>
-                </a>
-            </div>
-            <div class="u-custom-menu u-nav-container">
-                <ul class="u-nav u-unstyled u-nav-3">
-                    <li class="u-nav-item"><a class="u-border-hover-palette-2-base u-button-style u-custom-color-3 u-nav-link u-radius" href="Registro.html" style="--radius: 15px;">Registro</a></li>
-                </ul>
-            </div>
-            <div class="u-custom-menu u-nav-container-collapse">
-                <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
-                    <div class="u-inner-container-layout u-sidenav-overflow">
-                        <div class="u-menu-close"></div>
-                        <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-4">
-                            <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Registro.html">Registro</a></li>
+                            <li class="nav-link"><a class="u-button-style u-nav-link" href="/profile">Profile</a></li>
+                            {% else %}
+                            <li class="nav-link"><a class="u-button-style u-nav-link" href="/login">Login</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -141,7 +78,6 @@
             </div>
         </nav>
     </div>
-<<<<<<< HEAD
 </header>
 
 <div class="container">
@@ -155,11 +91,9 @@
     </div>
 </footer>
 
-=======
     
     <!-- Include CSRF token here -->
     {% csrf_token %}
->>>>>>> 7fde67fbbdb76cabb78dfab6cb5cad40f4181bc9
 
 </body>
 </html>
