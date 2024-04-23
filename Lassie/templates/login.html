@@ -1,0 +1,28 @@
+{% extends 'base_template.html' %}
+{% block content %}
+<div class="row py-5">
+    <div class="col-12 col-lg-12 text-center">
+        <h2 class="text-lightblue">Login</h2>
+    </div>
+</div>
+<form action="#" method="POST">
+    {% csrf_token %}  <!-- Add CSRF token here -->
+    <div class="row">
+        <div class="pb-3 offset-lg-4 col-lg-4 col-12">
+            <label for="txtUsername">Username:</label>
+            <input type="text" id="txtUsername" name="txtUsername" class="form-control" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="pb-3 offset-lg-4 col-lg-4 col-12">
+            <label for="txtPassword">Password:</label>
+            <input type="password" id="txtPassword" name="txtPassword" class="form-control" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="pb-3 offset-lg-4 col-lg-4 col-12">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a href="#" class="btn btn-link">Forgot Password?</a>
+        </div>
+    </div>
+{% endblock content %}

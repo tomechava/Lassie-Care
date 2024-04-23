@@ -16,11 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.auth.views import LoginView
 from Lassie import views as LassieViews
+from Chatbot import views as ChatbotViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LassieViews.home),
-    path('login', LassieViews.login),
+    path('register', LassieViews.register),
     path('pet', LassieViews.pet),
+    path('profile/', LassieViews.profile, name='profile'),
+    path('login', LoginView.as_view(template_name='login.html'), name="login"),
+    path('lassiechat', ChatbotViews.lassiechat, name='lassiechat'),
+    path('asklassiechat', ChatbotViews.asklassiechat, name='asklassiechat'),
 ]
 

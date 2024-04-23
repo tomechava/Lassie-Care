@@ -1,0 +1,60 @@
+{% extends 'base_template.html' %}
+{% block content %}
+<div class="row py-5">
+    <div class="col-12 col-lg-11 offset-lg-1">
+        <h2 class="text-lightblue">Chatbot</h2>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 col-lg-11 offset-lg-1">
+        <div class="chat-container">
+            <div class="chat-box" id="chat-box">
+                <div class="chat-message">
+                    <div class="chat-message-content">
+                        <p>Hello! I'm Lassie, your virtual assistant. How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <form method="POST" id="chat-form">
+                {% csrf_token %}
+                <div class="chat-input">
+                    <input type="text" id="chat-input" name="chat-input" placeholder="Type your message here..." class="form-control">
+                    <button id="send-button" type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--  
+<script>
+    const chatBox = document.getElementById('chat-box');
+    const chatInput = document.getElementById('chat-input');
+    const sendButton = document.getElementById('send-button');
+
+    sendButton.addEventListener('click', () => {
+        const message = chatInput.value;
+        if (message.trim() === '') {
+            return;
+        }
+
+        const chatMessage = document.createElement('div');
+        chatMessage.classList.add('chat-message');
+        chatMessage.innerHTML = `
+            <div class="chat-message-content">
+                <p>${message}</p>
+            </div>
+        `;
+        chatBox.appendChild(chatMessage);
+
+        chatInput.value = '';
+        chatBox.scrollTop = chatBox.scrollHeight;
+    });
+
+    chatInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            sendButton.click();
+        }
+    }); 
+
+</script>-->
+{% endblock content %}

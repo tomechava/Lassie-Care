@@ -6,6 +6,7 @@
     </div>
 </div>
 <form action="#" method="POST">
+    {% csrf_token %}  <!-- Add CSRF token here -->
     <div class="row">
         <div class="pb-3 offset-lg-2 col-lg-4 col-12">
             <label for="txtFirstName">First Name:</label>
@@ -30,9 +31,9 @@
         <div class="pb-3 offset-lg-2 col-lg-4 col-12">
             <label for="selGender">Gender:</label>
             <select id="selGender" name="selGender" class="form-control" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">Other</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="O">Other</option>
             </select>
         </div>
         <div class="pb-3 col-lg-4 col-12">
@@ -54,15 +55,6 @@
         <div class="pb-3 offset-lg-2 col-lg-4 col-12">
             <label for="txtPassword">Password:</label>
             <input type="password" id="txtPassword" name="txtPassword" class="form-control" required>
-        </div>
-        <div class="pb-3 col-lg-4 col-12">
-            <div class="notification-container">
-                <span>Receive Notifications:</span>
-                <div class="notification-buttons" class="form-control">
-                    <button type="button" class="btn btn-light">Accept</button>
-                    <button type="button" class="btn btn-light">Reject</button>
-                </div>
-            </div>
         </div>
     </div>
     <div class="row">
