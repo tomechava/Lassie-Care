@@ -46,7 +46,7 @@ class DogBreed(models.Model):
     size = models.CharField(max_length=50)
     life_expectancy = models.CharField(max_length=50)
     origin = models.CharField(max_length=100)
-    personality = models.JSONField(default=' ')
+    personality = models.JSONField(default=dict)
 
     def __str__(self):
         return self.name
