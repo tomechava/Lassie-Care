@@ -7,7 +7,7 @@
     <meta name="keywords" content="Cat Stories, News, Tips &amp;amp; Tricks, ​Welcome to Club Cat Blog, ​Thinking of getting a cat?, ​Get the greatest stories right in your mailbox">
     <meta name="description" content="">
     <title>base_template</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/nicepage.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'css/base_template.css' %}" media="screen">
     <script src="{% static 'js/jquery.js' %}" defer=""></script>
@@ -79,7 +79,7 @@
     </div>
 </header>
 
-<div class="container">
+<div class="container mb-5">
     {% block content %}
     {% endblock content %}
 </div>
