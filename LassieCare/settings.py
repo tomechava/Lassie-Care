@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "phonenumber_field",
-    'Lassie.apps.LassieConfig'
+    'Lassie.apps.LassieConfig',
+    'Chatbot',
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,5 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    'LassieCare/static/',
+    BASE_DIR / 'static',
 ]
