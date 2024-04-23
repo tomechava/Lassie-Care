@@ -1,0 +1,17 @@
+{% extends 'base_template.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>User Profile</h1>
+    <p>First Name: {{ user_profile.firstName }}</p>
+    <p>Last Name: {{ user_profile.lastName }}</p>
+    <p>Address: {{ user_profile.address }}</p>
+    <p>Phone: {{ user_profile.phone }}</p>
+    <p>Username: {{ user_profile.username }}</p>
+    <p>Email: {{ user_profile.email }}</p>
+    <p>Password: {{ user_profile.password }}</p>
+    <p>Gender: {{ user_profile.gender }}</p>
+    <p>Birth Date: {{ user_profile.birthDate }}</p>
+{% else %}
+    <p>Please log in to view your profile.</p>
+{% endif %}
+{% endblock content %}

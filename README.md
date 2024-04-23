@@ -5,4 +5,6 @@ The AI will also provide information on what actions to take if the situation re
 
 This proyect is built using the Django Framework with SQLite as database.
 
+GEMINI-PRO API integration for Pet Care recommendations.
+
 Lassie's Care is a proyect developed by Tomas Echavarria, Daniela Arango and Rafael Palau.

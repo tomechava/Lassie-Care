@@ -32,6 +32,7 @@
     <meta property="og:title" content="base_template">
     <meta property="og:type" content="website">
 </head>
+<<<<<<< HEAD
 <body data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="es">
 <header class="u-clearfix u-header u-header" id="sec-21dd">
     <div class="u-clearfix u-sheet u-sheet-1">
@@ -45,6 +46,51 @@
                     <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
             </g></svg>
                 </a>
+=======
+
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand align-self-center" href="/">
+                <h1 class="text-lightblue">Lassie's Care</h1>
+            </a>
+
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#templatemo_main_nav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center" id="templatemo_main_nav">
+                <div class="flex-fill">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
+                        <li class="nav-item">
+                            <a class="nav-link text-lightblue" href="/">Home <i class="fa-solid fa-house"></i></a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="#">Lassie AI <i class="fa-solid fa-hand-holding-medical"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="/pet">My Pets <i class="fa-solid fa-paw"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="/profile">Profile <i class="fa-solid fa-user"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="/logout">Logout <i class="fa-solid fa-sign-out"></i></a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="/login">Login <i class="fa-solid fa-sign-in"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-lightblue" href="/register">Register <i class="fa-solid fa-user-plus"></i></a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+>>>>>>> 7fde67fbbdb76cabb78dfab6cb5cad40f4181bc9
             </div>
             <div class="u-custom-menu u-nav-container">
                 <ul class="u-custom-font u-nav u-unstyled u-nav-1">
@@ -95,6 +141,7 @@
             </div>
         </nav>
     </div>
+<<<<<<< HEAD
 </header>
 
 <div class="container">
@@ -108,6 +155,11 @@
     </div>
 </footer>
 
+=======
+    
+    <!-- Include CSRF token here -->
+    {% csrf_token %}
+>>>>>>> 7fde67fbbdb76cabb78dfab6cb5cad40f4181bc9
 
 </body>
 </html>
