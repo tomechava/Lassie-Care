@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from .models import OwnerProfile
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
 from django.contrib import messages
 # Create your views here.
@@ -51,6 +51,7 @@ def register(request):
         # Render registration form
         return render(request, 'register.html')
 
+@login_required
 def pet(request):
     return render(request, 'pet.html')
 
@@ -59,3 +60,8 @@ def profile(request):
     # Retrieve the current user's profile
     user_profile = OwnerProfile.objects.get(user=request.user)
     return render(request, 'profile.html', {'user_profile': user_profile})
+
+@login_required
+def log_out(request):
+    logout(request)
+    return redirect('/')

@@ -1,16 +1,68 @@
 {% extends 'base_template.html' %}
 {% block content %}
 {% if user.is_authenticated %}
-    <h1>User Profile</h1>
-    <p>First Name: {{ user_profile.firstName }}</p>
-    <p>Last Name: {{ user_profile.lastName }}</p>
-    <p>Address: {{ user_profile.address }}</p>
-    <p>Phone: {{ user_profile.phone }}</p>
-    <p>Username: {{ user_profile.username }}</p>
-    <p>Email: {{ user_profile.email }}</p>
-    <p>Password: {{ user_profile.password }}</p>
-    <p>Gender: {{ user_profile.gender }}</p>
-    <p>Birth Date: {{ user_profile.birthDate }}</p>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-secondary text-white">
+                <h5 class="card-title mb-0">hello</h5>
+            </div>
+            <div class="card-body">
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" id="username" class="form-control" value="{{ user_profile.user.username }}" readonly>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-control" value="{{ user_profile.user.email }}" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text" id="first_name" class="form-control" value="{{ user_profile.firstName }}" readonly>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="last_name" class="form-label">Last Name</label>
+                    <input type="text" id="last_name" class="form-control" value="{{ user_profile.lastName }}" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" class="form-control" value="{{ user_profile.address }}" readonly>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" id="phone" class="form-control" value="{{ user_profile.phone_number }}" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <input type="text" id="gender" class="form-control" value="{{ user_profile.gender }}" readonly>
+                </div>
+                <div class="col-6 mb-3">
+                    <label for="birthdate" class="form-label">Birthdate</label>
+                    <input type="text" id="birthdate" class="form-control" value="{{ user_profile.birthDate }}" readonly>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4 mb-3">
+                    <a href="#" class="btn btn-secondary">Edit Profile</a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href="#" class="btn btn-secondary">Change Password</a>
+                </div>
+                <div class="col-4 mb-3">
+                    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
 {% else %}
     <p>Please log in to view your profile.</p>
 {% endif %}

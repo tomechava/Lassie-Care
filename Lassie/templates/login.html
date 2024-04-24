@@ -9,14 +9,14 @@
     {% csrf_token %}  <!-- Add CSRF token here -->
     <div class="row">
         <div class="pb-3 offset-lg-4 col-lg-4 col-12">
-            <label for="txtUsername">Username:</label>
-            <input type="text" id="txtUsername" name="txtUsername" class="form-control" required>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" class="form-control" required>
         </div>
     </div>
     <div class="row">
         <div class="pb-3 offset-lg-4 col-lg-4 col-12">
-            <label for="txtPassword">Password:</label>
-            <input type="password" id="txtPassword" name="txtPassword" class="form-control" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" class="form-control" required>
         </div>
     </div>
     <div class="row">
@@ -25,4 +25,10 @@
             <a href="#" class="btn btn-link">Forgot Password?</a>
         </div>
     </div>
+</form>
+<div class="row">
+    <div class="pt-3 offset-lg-4 col-lg-4 col-12">
+        <p>Don't have an account? <a href="/register">Register</a></p>
+    </div>
+</div>
 {% endblock content %}
