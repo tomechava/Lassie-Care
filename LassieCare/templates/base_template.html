@@ -83,12 +83,26 @@
     {% block content %}
     {% endblock content %}
 
-
-<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-fa48">
-    <div class="u-clearfix u-sheet u-sheet-1">
-        <p class="u-small-text u-text u-text-variant u-text-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias earum ullam quibusdam adipisci rerum sint unde quod, recusandae magni neque rem obcaecati placeat ducimus sit quis enim a aliquam provident.</p>
+<!-- FOOTER -->
+<footer class="bg-dark text-light py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Contact Us</h5>
+                <p>Email: info@lassiecare.com</p>
+                <p>Phone: +57 123-456-7890</p>
+                <p>Address: Calle 1, Medellin, Colombia</p>
+            </div>
+        </div>
+        <hr class="bg-light">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2024 Lassie's Care. All rights reserved.</p>
+            </div>
+        </div>
     </div>
 </footer>
+<!-- END OF FOOTER -->
 
     <!-- Include CSRF token here -->
     {% csrf_token %}
