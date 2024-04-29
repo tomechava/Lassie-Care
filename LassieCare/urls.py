@@ -24,11 +24,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', LassieViews.home),
     path('register', LassieViews.register),
-    path('pet', LassieViews.pet),
-    path('profile/', LassieViews.profile, name='profile'),
-    path('login', LoginView.as_view(template_name='login.html'), name="login"),
-    path('log_out', LassieViews.log_out, name="logout"),
-    path('lassiechat', ChatbotViews.lassiechat, name='lassiechat'),
+    path('pets/', LassieViews.pets, name='pets'),       #List of pets
+    path('pet/new', LassieViews.pet_register, name='pet_new'),      #Register a new pet
+    path('pet/<int:pet_id>', LassieViews.pet, name='pet'),      #View a pet
+    path('pet/<int:pet_id>/edit', LassieViews.pet_edit, name='pet_edit'),       #Edit a pet
+    path('pet/<int:pet_id>/delete', LassieViews.pet_delete, name='pet_delete'),      #Delete a pet
+    path('profile/', LassieViews.profile, name='profile'),      #View user profile
+    path('login', LoginView.as_view(template_name='login.html'), name="login"),     #Login page
+    path('log_out', LassieViews.log_out, name="logout"),    #Logout page
+    path('lassiechat', ChatbotViews.lassiechat, name='lassiechat'),     #Chatbot page
     path('asklassiechat', ChatbotViews.asklassiechat, name='asklassiechat'),
 ]
 

@@ -52,8 +52,8 @@ def register(request):
         return render(request, 'register.html')
 
 @login_required
-def pet(request):
-    return render(request, 'pet.html')
+def pet_register(request):
+    return render(request, 'pet_register.html')
 
 @login_required
 def profile(request):
