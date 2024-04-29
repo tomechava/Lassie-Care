@@ -21,9 +21,9 @@ from Lassie import views as LassieViews
 from Chatbot import views as ChatbotViews
 urlpatterns = [
     path('chatbot/', include('django.contrib.auth.urls')),  # include the auth urls for login, logout, etc.
-    path('admin/', admin.site.urls),
-    path('', LassieViews.home),
-    path('register', LassieViews.register),
+    path('admin/', admin.site.urls),    #Admin page
+    path('', LassieViews.home),     #Home page
+    path('register', LassieViews.register),    #Register page
     path('pets/', LassieViews.pets, name='pets'),       #List of pets
     path('pet/new', LassieViews.pet_register, name='pet_new'),      #Register a new pet
     path('pet/<int:pet_id>', LassieViews.pet, name='pet'),      #View a pet

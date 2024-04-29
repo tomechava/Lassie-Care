@@ -53,6 +53,7 @@ def register(request):
 
 @login_required
 def pet_add(request):
+    
     return render(request, 'pet_register.html')
 
 @login_required
