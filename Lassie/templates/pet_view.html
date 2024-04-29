@@ -1,0 +1,31 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+<div class="container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>{{ pet.petName }}</h2>
+        </div>
+    </div>
+    <div class="card mb-5">
+        <div class="row g-0">
+            <div class="col-4">
+                <img src="{{ pet.petImage.url }}" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{ pet.namePet }}</h3>
+                    <p class="card-text">Breed: {{ pet.breed }}</p>
+                    <p class="card-text">Age: {{ pet.age }}</p>
+                    <p class="card-text">Weight: {{ pet.weight }} lbs</p>
+                    <p class="card-text">Size: {{ pet.size }}</p>
+                    <p class="card-text">Medical Conditions:</p>
+                    <p class="card-text">Medical History: <a href="{{ pet.medicalHistory.url }}" target="_blank">View</a></p>
+                    <a href="/pets" class="btn btn-brownprimary">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
