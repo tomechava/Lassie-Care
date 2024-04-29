@@ -11,15 +11,6 @@ from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv('api_keys.env')
 genai.configure(api_key=os.environ.get('gemini_api_key'))
 
-#@login_required
-def lassiechat(request):
-    if request.method == "POST":
-        text = request.POST.get("text")
-        model = genai.GenerativeModel("gemini-pro")
-        response = model.generate_content(text)
-        return JsonResponse({"response": response})
-    return HttpResponseRedirect(reverse("asklassiechat"))
-
 def asklassiechat(request):
     if request.method == "POST":
         #text = request.POST.get("chat-input")
