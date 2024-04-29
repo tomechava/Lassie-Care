@@ -74,7 +74,7 @@ def pet_add(request):
             Weight=pet_weight,
             age=pet_age,
             size=pet_size,
-            medicalHistory=pet_files
+            medicalHistory=pet_medical_history
         )
         
         return redirect('pets')
