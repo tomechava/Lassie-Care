@@ -10,12 +10,12 @@
         {% for pet in pets %}
         <div class="col-12 col-lg-6">
             <div class="card card-dark">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="media/{{ pet.petImage }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Pet Name</h5>
                     <p class="card-text">Breed: </p>
                     <p class="card-text">Age: </p>
-                    <a href="pet/{{ pet.idpet }}" class="btn btn-brownprimary">View Profile</a>
+                    <a href="{{ pet.idpet }}" class="btn btn-brownprimary">View Profile</a>
                 </div>
             </div>
         </div>

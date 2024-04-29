@@ -19,6 +19,9 @@ from django.urls import path, include
 from django.contrib.auth.views import LoginView
 from Lassie import views as LassieViews
 from Chatbot import views as ChatbotViews
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('chatbot/', include('django.contrib.auth.urls')),  # include the auth urls for login, logout, etc.
     path('admin/', admin.site.urls),    #Admin page
@@ -33,5 +36,6 @@ urlpatterns = [
     path('login', LoginView.as_view(template_name='login.html'), name="login"),     #Login page
     path('log_out', LassieViews.log_out, name="logout"),    #Logout page
     path('asklassiechat', ChatbotViews.asklassiechat, name='asklassiechat'),    #Chatbot page
-]
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

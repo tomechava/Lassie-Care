@@ -30,21 +30,39 @@ class DogBreed(models.Model):
 
     def __str__(self):
         return self.name
+
+def rename_image(instance, filename):
+    #Get the extension
+    extension = filename.split('.')[-1]
     
+    #generate new filename
+    new_filename = f"{instance.id}.{extension}"
+    
+    return f"pet_images/{new_filename}"
+
+def rename_medical_history(instance, filename):
+    #Get the extension
+    extension = filename.split('.')[-1]
+    
+    #generate new filename
+    new_filename = f"{instance.id}.{extension}"
+    
+    return f"medical_histories/{new_filename}"
+
 class PetProfile(models.Model):
     ownerprofile = models.ForeignKey(OwnerProfile, on_delete=models.CASCADE)
-    petImage = models.ImageField(upload_to='media/pet_images', null=True, blank=True)
+    petImage = models.ImageField(upload_to='pet_images', default='static/images/DOG_DEFAULT.png')
     namePet = models.CharField(max_length=300)
     weight= models.DecimalField(max_digits=10, decimal_places=2)
-    breed = models.ForeignKey(DogBreed, on_delete=models.CASCADE)
-    age = models.IntegerField()
+    breed = models.ForeignKey(DogBreed, on_delete=models.CASCADE,)
+    age = models.CharField(max_length=3)
     SIZE_CHOICES = [
         ('S', 'Small'),
-        ('M', 'Medieum'),
+        ('M', 'Medium'),
         ('B', 'Big'),
     ]
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
-    medicalHistory = models.FileField(upload_to='media/medical_history', null=True, blank=True)
+    medicalHistory = models.FileField(upload_to='medical_histories', null=True, blank=True)
     
     def __str__(self):
         return self.namePet

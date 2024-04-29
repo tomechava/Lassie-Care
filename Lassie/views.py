@@ -45,6 +45,8 @@ def register(request):
             
         )
         
+        owner_profile.save()
+        
         # Redirect to a success page or perform other actions
         return redirect('login')
     else:
@@ -80,7 +82,10 @@ def pet_add(request):
             breed=pet_breed
         )
         
+        pet.save()
+        
         return redirect('pets')
+    
     breeds = DogBreed.objects.all()
     return render(request, 'pet_add.html', {'breeds': breeds})
 
