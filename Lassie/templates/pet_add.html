@@ -1,55 +1,69 @@
 {% extends 'base_template.html' %}
 {% block content %}
-<div class="row py-5">
-    <div class="col-12 col-lg-11 offset-lg-1">
-        <h2 class="text-brownprimary">Pet Profile</h2>
+<div class="container">
+    <div class="row py-5">
+        <div class="col-12 col-lg-11 offset-lg-1">
+            <h2 class="text-brownprimary">Pet Profile</h2>
+        </div>
     </div>
+    <form action="#" method="POST">
+        <div class="row">
+            <div class="pb-3 col-8 offset-2">
+                <label for="petImage">Image:</label>
+                <input type="file" id="petImage" name="petImage" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                <label for="petName">Name:</label>
+                <input type="text" id="petName" name="petName" class="form-control" required>
+            </div>
+            <div class="pb-3 col-lg-4 col-12">
+                <label for="petWeight">Weight (lbs):</label>
+                <input type="number" id="petWeight" name="petWeight" class="form-control" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                <label for="petBreed">Breed:</label>
+                <select name="petBreed" id="petBreed" class="form-control">
+                    <option value="" selected disabled>Select</option>
+                    {% for breed in breeds %}
+                    <option value="{{ breed.idbreed }}">{{ breed.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="pb-3 col-lg-4 col-12">
+                <label for="petAge">Age:</label>
+                <input type="number" id="petAge" name="petAge" class="form-control" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                <label for="medicalConditions">Medical Conditions:</label>
+                <input type="text" id="medicalConditions" name="medicalConditions" class="form-control" required>
+            </div>
+            <div class="pb-3 col-lg-4 col-12">
+                <label for="selSize">Size:</label>
+                <select id="selSize" name="selSize" class="form-control" required>
+                    <option value="Small">Small</option>
+                    <option value="Medieum">Medium</option>
+                    <option value="Large">Large</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                <label for="medicalHistory">Medical History:</label>
+                <input type="file" id="medicalHistory" name="medicalHistory" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-brownprimary">Create Profile</button>
+            </div>
+        </div>
+    </form>
 </div>
-<form action="#" method="POST">
-    <div class="row">
-        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-            <label for="txtPetName">Pet Name:</label>
-            <input type="text" id="txtPetName" name="txtPetName" class="form-control" required>
-        </div>
-        <div class="pb-3 col-lg-4 col-12">
-            <label for="txtPetWeight">Weight (lbs):</label>
-            <input type="number" id="txtPetWeight" name="txtPetWeight" class="form-control" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-            <label for="txtPetBreed">Breed:</label>
-            <input type="text" id="txtPetBreed" name="txtPetBreed" class="form-control">
-        </div>
-        <div class="pb-3 col-lg-4 col-12">
-            <label for="txtPetAge">Age:</label>
-            <input type="number" id="txtPetAge" name="txtPetAge" class="form-control" required>
-        </div>
-    </div>
-    <div class="row">
-        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-            <label for="txtMedicalConditions">Medical Conditions:</label>
-            <input type="text" id="txtMedicalConditions" name="txtMedicalConditions" class="form-control" required>
-        </div>
-        <div class="pb-3 col-lg-4 col-12">
-            <label for="selSize">Size:</label>
-            <select id="selSize" name="selSize" class="form-control" required>
-                <option value="Small">Small</option>
-                <option value="Medieum">Medium</option>
-                <option value="Large">Large</option>
-            </select>
-        </div>
-    </div>
-    <div class="row">
-        <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-            <label for="medicalHistory">Medical History:</label>
-            <input type="file" id="medicalHistory" name="medicalHistory" class="form-control-file">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12 text-center">
-            <button type="submit" class="btn btn-brownprimary">Create Profile</button>
-        </div>
-    </div>
-</form>
+
 {% endblock content %}

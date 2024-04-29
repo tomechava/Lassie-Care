@@ -20,24 +20,6 @@ class OwnerProfile(models.Model):
     
     def __str__(self):
         return f"{self.user.username}'s Owner Profile"
-
-class PetProfile(models.Model):
-    ownerprofile = models.ForeignKey(OwnerProfile, on_delete=models.CASCADE)
-    namePet = models.CharField(max_length=300)
-    Weight= models.DecimalField(max_digits=10, decimal_places=2)
-    #breed
-    age = models.IntegerField()
-    SIZE_CHOICES = [
-        ('S', 'Small'),
-        ('M', 'Medieum'),
-        ('B', 'Big'),
-    ]
-    size = models.CharField(max_length=1, choices=SIZE_CHOICES)
-    files = models.FileField(upload_to='archivos/')
-    
-    def __str__(self):
-        return self.namePet
-    
     
 class DogBreed(models.Model):
     name = models.CharField(max_length=100)
@@ -48,3 +30,23 @@ class DogBreed(models.Model):
 
     def __str__(self):
         return self.name
+    
+class PetProfile(models.Model):
+    ownerprofile = models.ForeignKey(OwnerProfile, on_delete=models.CASCADE)
+    petImage = models.ImageField(upload_to='media/pet_images', null=True, blank=True)
+    namePet = models.CharField(max_length=300)
+    weight= models.DecimalField(max_digits=10, decimal_places=2)
+    breed = models.ForeignKey(DogBreed, on_delete=models.CASCADE)
+    age = models.IntegerField()
+    SIZE_CHOICES = [
+        ('S', 'Small'),
+        ('M', 'Medieum'),
+        ('B', 'Big'),
+    ]
+    size = models.CharField(max_length=1, choices=SIZE_CHOICES)
+    medicalHistory = models.FileField(upload_to='media/medical_history', null=True, blank=True)
+    
+    def __str__(self):
+        return self.namePet
+    
+    

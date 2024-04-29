@@ -53,12 +53,34 @@ def register(request):
 
 @login_required
 def pets(request):
-    pets = PetProfile.objects.filter(ownerprofile__user=request.user)
+    pets = PetProfile.objects.filter(ownerprofile=request.user.ownerprofile)    #######
     return render(request, 'pets.html', {'pets': pets})
 
 @login_required
 def pet_add(request):
-    return render(request, 'pet_register.html')
+    if(request.method == 'POST'):
+        pet_image = request.FILES.get('petImage')
+        pet_name = request.POST.get('petName')
+        pet_weight = request.POST.get('petWeight')
+        pet_age = request.POST.get('petAge')
+        pet_size = request.POST.get('selSize')
+        pet_medical_history = request.FILES.get('medicalHistory')
+        
+        # Create PetProfile instance and link it to the OwnerProfile
+        pet = PetProfile.objects.create(
+            ownerprofile=request.user.ownerprofile,
+            petImage=pet_image,
+            namePet=pet_name,
+            Weight=pet_weight,
+            age=pet_age,
+            size=pet_size,
+            medicalHistory=pet_files
+        )
+        
+        return redirect('pets')
+    breeds = DogBreed.objects.all()
+    return render(request, 'pet_add.html', {'breeds': breeds})
+
 
 @login_required
 def pet_edit(request, pet_id):
