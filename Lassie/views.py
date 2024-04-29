@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from .models import OwnerProfile
+from .models import OwnerProfile, PetProfile, DogBreed
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
@@ -52,9 +52,29 @@ def register(request):
         return render(request, 'register.html')
 
 @login_required
+def pets(request):
+    pets = PetProfile.objects.filter(ownerprofile__user=request.user)
+    return render(request, 'pets.html', {'pets': pets})
+
+@login_required
 def pet_add(request):
-    
     return render(request, 'pet_register.html')
+
+@login_required
+def pet_edit(request, pet_id):
+    pet = PetProfile.objects.get(id=pet_id)
+    return render(request, 'pet_edit.html', {'pet': pet})
+
+@login_required
+def pet_delete(request, pet_id):
+    pet = PetProfile.objects.get(id=pet_id)
+    pet.delete()
+    return redirect('pets')
+
+@login_required
+def pet(request, pet_id):
+    pet = PetProfile.objects.get(id=pet_id)
+    return render(request, 'pet_view.html', {'pet': pet})
 
 @login_required
 def profile(request):

@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),    #Admin page
     path('', LassieViews.home),     #Home page
     path('register', LassieViews.register),    #Register page
-    path('pets/', LassieViews.pets, name='pets'),       #List of pets
-    path('pet/new', LassieViews.pet_register, name='pet_new'),      #Register a new pet
+    path('pets', LassieViews.pets, name='pets'),       #List of pets
+    path('pet/new', LassieViews.pet_add, name='pet_new'),      #Register a new pet
     path('pet/<int:pet_id>', LassieViews.pet, name='pet'),      #View a pet
     path('pet/<int:pet_id>/edit', LassieViews.pet_edit, name='pet_edit'),       #Edit a pet
     path('pet/<int:pet_id>/delete', LassieViews.pet_delete, name='pet_delete'),      #Delete a pet
