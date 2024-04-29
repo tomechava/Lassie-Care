@@ -65,16 +65,19 @@ def pet_add(request):
         pet_age = request.POST.get('petAge')
         pet_size = request.POST.get('selSize')
         pet_medical_history = request.FILES.get('medicalHistory')
+        pet_breed_id = request.POST.get('petBreed')
+        pet_breed = DogBreed.objects.get(id=pet_breed_id)
         
         # Create PetProfile instance and link it to the OwnerProfile
         pet = PetProfile.objects.create(
             ownerprofile=request.user.ownerprofile,
             petImage=pet_image,
             namePet=pet_name,
-            Weight=pet_weight,
+            weight=pet_weight,
             age=pet_age,
             size=pet_size,
-            medicalHistory=pet_medical_history
+            medicalHistory=pet_medical_history,
+            breed=pet_breed
         )
         
         return redirect('pets')

@@ -7,6 +7,7 @@
         </div>
     </div>
     <form action="#" method="POST">
+        {% csrf_token %}
         <div class="row">
             <div class="pb-3 col-8 offset-2">
                 <label for="petImage">Image:</label>
@@ -29,7 +30,7 @@
                 <select name="petBreed" id="petBreed" class="form-control">
                     <option value="" selected disabled>Select</option>
                     {% for breed in breeds %}
-                    <option value="{{ breed.idbreed }}">{{ breed.name }}</option>
+                    <option value="{{ breed.id }}">{{ breed.name }}</option>
                     {% endfor %}
                 </select>
             </div>
