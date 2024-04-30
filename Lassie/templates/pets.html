@@ -8,17 +8,20 @@
     </div>
     <div class="row">
         {% for pet in pets %}
-        <div class="col-12 col-lg-6">
-            <div class="card card-dark">
-                <img src="media/{{ pet.petImage }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Pet Name</h5>
-                    <p class="card-text">Breed: </p>
-                    <p class="card-text">Age: </p>
-                    <a href="pet/{{ pet.id }}" class="btn btn-brownprimary">View Profile</a>
+            <div class="col-12 col-lg-4 pb-3">
+                <div class="card card-dark">
+                    <img src="{{ pet.petImage.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Pet Name: {{ pet.petName }}</h5>
+                        <p class="card-text">Breed: {{ pet.breed }}</p>
+                        <p class="card-text">Age: {{ pet.age }}</p>
+                        <a href="{% url 'pet' pet.id %}" class="btn btn-brownprimary">View Profile</a>
+                    </div>
                 </div>
             </div>
-        </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                </div><div class="row">
+            {% endif %}
         {% endfor %}
     </div>
 </div>
