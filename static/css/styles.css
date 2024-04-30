@@ -1,7 +1,7 @@
 .text-brownprimary {
-    color: #332b38;
+    color: #332b38 !important;
 }
 .btn-brownprimary {
-    background-color: #332b38;
-    color: white;
+    background-color: #332b38 !important;
+    color: white !important;
 }

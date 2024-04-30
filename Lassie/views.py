@@ -92,8 +92,25 @@ def pet_add(request):
 
 @login_required
 def pet_edit(request, pet_id):
+    if(request.method == 'POST'):
+        pet = PetProfile.objects.get(id=pet_id)
+        pet.petImage = request.FILES.get('petImage')
+        pet.namePet = request.POST.get('petName')
+        pet.weight = request.POST.get('petWeight')
+        pet.age = request.POST.get('petAge')
+        pet.size = request.POST.get('selSize')
+        pet.medicalHistory = request.FILES.get('medicalHistory')
+        pet_breed_id = request.POST.get('petBreed')
+        pet_breed = DogBreed.objects.get(id=pet_breed_id)
+        pet.breed = pet_breed
+        
+        pet.save()
+        
+        return redirect('pets')
+    
     pet = PetProfile.objects.get(id=pet_id)
-    return render(request, 'pet_edit.html', {'pet': pet})
+    breeds = DogBreed.objects.all()
+    return render(request, 'pet_edit.html', {'pet': pet, 'breeds': breeds})
 
 @login_required
 def pet_delete(request, pet_id):
