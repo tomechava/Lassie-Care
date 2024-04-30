@@ -5,3 +5,18 @@
     background-color: #332b38 !important;
     color: white !important;
 }
+.pet-card-img {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+}
+.pet-card-desc {
+    height: 300px !important;
+    overflow: hidden !important;
+}
+.no-pets-img {
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 300px !important;
+    
+}

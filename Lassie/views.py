@@ -61,7 +61,8 @@ def pets(request):
 @login_required
 def pet_add(request):
     if(request.method == 'POST'):
-        pet_image = request.FILES.get('petImage')
+        default_image = 'static/images/DOG_DEFAULT.png'
+        pet_image = request.FILES.get('petImage', default_image)
         pet_name = request.POST.get('petName')
         pet_weight = request.POST.get('petWeight')
         pet_age = request.POST.get('petAge')
@@ -69,6 +70,7 @@ def pet_add(request):
         pet_medical_history = request.FILES.get('medicalHistory')
         pet_breed_id = request.POST.get('petBreed')
         pet_breed = DogBreed.objects.get(id=pet_breed_id)
+        pet_allergies = [allergy.strip() for allergy in (request.POST.get('petAllergies')).split('\n') if allergy.strip()]
         
         # Create PetProfile instance and link it to the OwnerProfile
         pet = PetProfile.objects.create(
@@ -79,7 +81,8 @@ def pet_add(request):
             age=pet_age,
             size=pet_size,
             medicalHistory=pet_medical_history,
-            breed=pet_breed
+            breed=pet_breed,
+            allergies=pet_allergies
         )
         
         pet.save()

@@ -63,6 +63,7 @@ class PetProfile(models.Model):
     ]
     size = models.CharField(max_length=1, choices=SIZE_CHOICES)
     medicalHistory = models.FileField(upload_to='medical_histories', null=True, blank=True)
+    allergies = models.TextField(null=True, blank=True)
     
     def __str__(self):
         return self.namePet

@@ -11,7 +11,7 @@
     <div class="card mb-5">
         <div class="row g-lg-0">
             <div class="col-lg-4 col-12">
-                <img src="{{ pet.petImage.url }}" class="img-fluid rounded-start" alt="...">
+                <img src="{% if pet.petImage != 'static/images/DOG_DEFAULT.png' and pet.petImage != 'static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}../{{pet.petImage}}{% endif %}" class="card-img-top" alt="...">
             </div>
             <div class="col-lg-8 col-12">
                 <div class="card-body">
@@ -21,8 +21,11 @@
                     <p class="card-text">Weight: {{ pet.weight }} lbs</p>
                     <p class="card-text">Size: {{ pet.size }}</p>
                     <p class="card-text">Medical Conditions:</p>
-                    <p class="card-text">Medical History: <a href="{{ pet.medicalHistory.url }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a></p>
+                    <p class="card-text">Allergies:{{pet.allergies}}</p>
+                    <p>{{pet.petImage}}</p>
+                    <p class="card-text">Medical History: <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a></p>
                     <a href="/pet/{{pet.id}}/edit" class="btn btn-brownprimary">Edit <i class="fas fa-edit"></i></a>
+                    <a href="/pet/{{pet.id}}/delete" class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></a>
                     <a href="/pets" class="btn btn-brownprimary">Back <i class="fas fa-arrow-left"></i></a>
                 </div>
             </div>
