@@ -23,3 +23,11 @@
 .bg-brownprimary {
     background-color: #332b38 !important;
 }
+/*begin-variables font*/
+.u-custom-font.u-text-font {
+    font-family: 'Open Sans',sans-serif !important;
+}
+.u-custom-font.u-heading-font {
+    font-family: Montserrat !important;
+}
+/*end-variables font*/
