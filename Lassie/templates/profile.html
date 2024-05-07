@@ -2,10 +2,10 @@
 {% block content %}
 {% if user.is_authenticated %}
 <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-8 mb-3">
         <div class="card">
-            <div class="card-header bg-secondary text-white">
-                <h5 class="card-title mb-0">hello</h5>
+            <div class="card-header bg-brownprimary text-white" style="background: #332b38 !important;">
+                <h3 class="card-title mb-0">Profile Information</h3>
             </div>
             <div class="card-body">
             <div class="row">
@@ -48,14 +48,14 @@
                     <input type="text" id="birthdate" class="form-control" value="{{ user_profile.birthDate }}" readonly>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-4 mb-3">
+            <div class="row text-center mb-3">
+                <div class="col-4">
                     <a href="#" class="btn btn-secondary">Edit Profile</a>
                 </div>
-                <div class="col-4 mb-3">
+                <div class="col-4">
                     <a href="#" class="btn btn-secondary">Change Password</a>
                 </div>
-                <div class="col-4 mb-3">
+                <div class="col-4">
                     <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
                 </div>
             </div>
