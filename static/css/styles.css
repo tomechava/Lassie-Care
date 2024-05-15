@@ -39,6 +39,14 @@ p, h1, h2, h3, h4, h5, h6 {
     object-fit: cover !important;
 
 }
+.navbar-nav .nav-link {
+    font-size: 1.2rem; /* Increase font size */
+    margin-right: 20px; /* Increase spacing between links */
+}
+
+.navbar-nav .nav-link:last-child {
+    margin-right: 0; /* Remove margin from the last link */
+}
 .image-upload-wrapper {
     position: relative;
     width: 100%;

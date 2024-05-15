@@ -35,7 +35,7 @@ urlpatterns = [
     path('profile/', LassieViews.profile, name='profile'),      #View user profile
     path('login', LoginView.as_view(template_name='login.html'), name="login"),     #Login page
     path('log_out', LassieViews.log_out, name="logout"),    #Logout page   
-    path('asklassiechat', ChatbotViews.asklassiechat.as_view(), name='ask_lassie'), #Chatbot page
+    path('asklassiechat', ChatbotViews.asklassiechat.as_view(), name='asklassiechat'),    #Chatbot page
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
