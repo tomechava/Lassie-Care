@@ -74,6 +74,36 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     text-align: center;
 }
+/*LASSIE AI*/
+.chat-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+
+.chat-message {
+    margin-bottom: 10px;
+}
+
+.chat-message-content {
+    background-color: #e9ecef;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.chat-input {
+    display: flex;
+    margin-top: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    margin-right: 10px;
+}
+/*LASSIE AI*/
 /*begin-variables font*/
 .u-custom-font.u-text-font {
     font-family: 'Open Sans', sans-serif !important;
