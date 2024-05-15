@@ -20,7 +20,9 @@ class asklassiechat(View):
     def post(self, request):
         text = request.POST.get("message")
         model = genai.GenerativeModel("gemini-pro")
-        response = model.generate_content(text)
+        chat = model.start_chat(history=[])
+        chat
+        response = chat.send_message(text)
         lassie_response = markdown.markdown(response.text)
         return JsonResponse({'message': lassie_response})
     
