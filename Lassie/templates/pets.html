@@ -9,7 +9,7 @@
     </div>
     {% if pets.count == 0 %}
         <div class="row">
-            <div class="card text-bg-dark">
+            <div class="card text-bg-dark mb-5">
                 <img src="{% static 'images/2p1g.png' %}" class="card-img no-pets-img" alt="...">
                 <div class="card-img-overlay text-center py-5">
                     <h3 class="card-title">No pet profiles found</h3>
@@ -37,12 +37,13 @@
             {% endif %}
         {% endfor %}
     </div>
-    {% endif %}
     <div class="row">
         <div class="col-12 text-center my-5">
             <a href="{% url 'pet_new' %}" class="btn btn-brownprimary">Add Pet</a>
         </div>
     </div>
+    {% endif %}
+    
 </div>
 
 

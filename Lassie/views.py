@@ -97,12 +97,16 @@ def pet_add(request):
 def pet_edit(request, pet_id):
     if(request.method == 'POST'):
         pet = PetProfile.objects.get(id=pet_id)
-        pet.petImage = request.FILES.get('petImage')
+        if request.FILES.get('petImage'):
+            pet.petImage = request.FILES.get('petImage')
+        
         pet.namePet = request.POST.get('petName')
         pet.weight = request.POST.get('petWeight')
         pet.age = request.POST.get('petAge')
         pet.size = request.POST.get('selSize')
-        pet.medicalHistory = request.FILES.get('medicalHistory')
+        if request.FILES.get('medicalHistory'):
+            pet.medicalHistory = request.FILES.get('medicalHistory')
+            
         pet_breed_id = request.POST.get('petBreed')
         pet_breed = DogBreed.objects.get(id=pet_breed_id)
         pet.breed = pet_breed

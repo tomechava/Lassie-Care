@@ -2,10 +2,9 @@
 
 {% block content %}
 <div class="container">
-
     <div class="row">
         <div class="col-12">
-            <h2>{{ pet.petName }}</h2>
+            <h2>{{ pet.namePet }}'s Profile</h2>
         </div>
     </div>
     <div class="card mb-5">
@@ -22,7 +21,6 @@
                     <p class="card-text">Size: {{ pet.size }}</p>
                     <p class="card-text">Medical Conditions:</p>
                     <p class="card-text">Allergies:{{pet.allergies}}</p>
-                    <p>{{pet.petImage}}</p>
                     <p class="card-text">Medical History: <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a></p>
                     <a href="/pet/{{pet.id}}/edit" class="btn btn-brownprimary">Edit <i class="fas fa-edit"></i></a>
                     <a href="/pet/{{pet.id}}/delete" class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></a>

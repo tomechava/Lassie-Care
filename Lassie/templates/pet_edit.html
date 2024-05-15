@@ -1,67 +1,71 @@
 {% extends 'base_template.html' %}
 {% block content %}
 <div class="container">
-    <div class="row py-5">
-        <div class="col-12 col-lg-11 offset-lg-1">
-            <h2 class="text-brownprimary">Pet Profile</h2>
+    <div class="row pt-3">
+        <div class="col-12">
+            <h2 class="text-brownprimary">{{ pet.namePet }}'s Profile</h2>
         </div>
     </div>
     <form action="#" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %}
         <div class="row">
-            <div class="pb-3 col-lg-8 offset-lg-2 col-12">
-                <label for="petImage">Image:</label>
-                <input type="file" id="petImage" name="petImage" class="form-control" value="">
+            <div class="col-lg-4 col-12">
+                <div class="image-upload-wrapper">
+                    <img src="{{ pet.petImage.url }}" class="img-fluid rounded" alt="Pet Image">
+                    <input type="file" id="petImage" name="petImage" class="form-control" {% if not pet.petImage %}required{% endif %}>
+                </div>
+            </div>
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                        <label for="petName">Name:</label>
+                        <input type="text" id="petName" name="petName" class="form-control" value="{{ pet.namePet }}"required>
+                    </div>
+                    <div class="pb-3 col-lg-4 col-12">
+                        <label for="petWeight">Weight (lbs):</label>
+                        <input type="number" id="petWeight" name="petWeight" class="form-control" value="{{ pet.weight }}" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                        <label for="petBreed">Breed:</label>
+                        <select name="petBreed" id="petBreed" class="form-control">
+                            <option value="" selected disabled>Select</option>
+                            {% for breed in breeds %}
+                            <option value="{{ breed.id }}" {% if pet.breed.name == breed.name %}selected{% endif %}>{{ breed.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="pb-3 col-lg-4 col-12">
+                        <label for="petAge">Age:</label>
+                        <input type="number" id="petAge" name="petAge" class="form-control" value="{{ pet.age }}" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                        <label for="medicalConditions">Medical Conditions:</label>
+                        <input type="text" id="medicalConditions" name="medicalConditions" class="form-control">
+                    </div>
+                    <div class="pb-3 col-lg-4 col-12">
+                        <label for="selSize">Size:</label>
+                        <select id="selSize" name="selSize" class="form-control" required>
+                            <option value="" {% if not pet.size %}selected{% endif %} disabled>Select</option>
+                            <option value="Small" {% if pet.size == "Small" %}selected{% endif %}>Small</option>
+                            <option value="Medium" {% if pet.size == "Medium" %}selected{% endif %}>Medium</option>
+                            <option value="Large" {% if pet.size == "Large" %}selected{% endif %}>Large</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                        <label for="medicalHistory">Medical History:</label>
+                        <input type="file" id="medicalHistory" name="medicalHistory" class="form-control" {% if not pet.medicalHistory %}required{% endif %}>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
-            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                <label for="petName">Name:</label>
-                <input type="text" id="petName" name="petName" class="form-control" value="{{ pet.namePet }}"required>
-            </div>
-            <div class="pb-3 col-lg-4 col-12">
-                <label for="petWeight">Weight (lbs):</label>
-                <input type="number" id="petWeight" name="petWeight" class="form-control" value="{{ pet.weight }}" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                <label for="petBreed">Breed:</label>
-                <select name="petBreed" id="petBreed" class="form-control">
-                    <option value="" selected disabled>Select</option>
-                    {% for breed in breeds %}
-                    <option value="{{ breed.id }}" {% if pet.breed.name == breed.name %}selected{% endif %}>{{ breed.name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="pb-3 col-lg-4 col-12">
-                <label for="petAge">Age:</label>
-                <input type="number" id="petAge" name="petAge" class="form-control" value="{{ pet.age }}" required>
-            </div>
-        </div>
-        <div class="row">
-            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                <label for="medicalConditions">Medical Conditions:</label>
-                <input type="text" id="medicalConditions" name="medicalConditions" class="form-control" value="{{ pet.medicalConditions }}" required>
-            </div>
-            <div class="pb-3 col-lg-4 col-12">
-                <label for="selSize">Size:</label>
-                <select id="selSize" name="selSize" class="form-control" required>
-                    <option value="" selected disabled>Select</option>
-                    <option value="Small" {% if pet.size == "Small" %}selected{% endif %}>Small</option>
-                    <option value="Medium" {% if pet.size == "Medium" %}selected{% endif %}>Medium</option>
-                    <option value="Large" {% if pet.size == "Large" %}selected{% endif %}>Large</option>
-                </select>
-            </div>
-        </div>
-        <div class="row">
-            <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                <label for="medicalHistory">Medical History:</label>
-                <input type="file" id="medicalHistory" name="medicalHistory" class="form-control" value="{{ pet.medicalHistory.url }}">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center mb-5">
+            <div class="col-12 text-center my-5">
                 <button type="submit" class="btn btn-brownprimary">Update Profile</button>
             </div>
         </div>
