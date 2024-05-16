@@ -7,10 +7,19 @@
         </div>
     </div>
     <form action="#" method="POST" enctype="multipart/form-data">
-        
         {% csrf_token %}
         <div class="row">
-            <div class="pb-3 col-8 offset-2">
+            <div class="pb-3 offset-lg-2 col-lg-8 col-12">
+                <label for="petType">Type:</label>
+                <select name="petType" id="petType" class="form-control">
+                    <option value="D" selected>Dog</option>
+                    <option value="C">Cat</option>
+                    <option value="O">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="pb-3  offset-lg-2 col-lg-8 col-12">
                 <label for="petImage">Image:</label>
                 <input type="file" id="petImage" name="petImage" class="form-control">
             </div>

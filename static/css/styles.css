@@ -47,6 +47,53 @@ p, h1, h2, h3, h4, h5, h6 {
 .navbar-nav .nav-link:last-child {
     margin-right: 0; /* Remove margin from the last link */
 }
+/*PET TYPE CHOOSING*/
+.pet-type-image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+.pet-type-image-wrapper img {
+    width: 100%;
+    display: block;
+}
+.pet-type-image-wrapper input[type="radio"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: hand;
+}
+
+.pet-type-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .3s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+}
+
+.pet-type-image-wrapper:hover .pet-type-overlay {
+    opacity: 1;
+}
+.pet-type-image-wrapper input[type="radio"]:checked ~ .pet-type-overlay {
+    opacity: 1;
+}
+/*PET TYPE CHOOSING*/
+/*PET EDIT*/
 .image-upload-wrapper {
     position: relative;
     width: 100%;
@@ -82,6 +129,7 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: 16px;
     text-align: center;
 }
+/*PET EDIT*/
 /*LASSIE AI*/
 .chat-container {
     border: 1px solid #ccc;

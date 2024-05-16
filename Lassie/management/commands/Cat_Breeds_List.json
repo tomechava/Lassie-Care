@@ -1,0 +1,79 @@
+[
+    {
+        "name": "Abyssinian",
+        "size": "Medium",
+        "life_expectancy": 15,
+        "origin": "Egypt",
+        "personality": "Active, Energetic, Social"
+    },
+    {
+        "name": "American Shorthair",
+        "size": "Medium",
+        "life_expectancy": 15,
+        "origin": "United States",
+        "personality": "Playful, Intelligent, Easygoing"
+    },
+    {
+        "name": "Bengal",
+        "size": "Large",
+        "life_expectancy": 14,
+        "origin": "United States",
+        "personality": "Active, Energetic, Intelligent"
+    },
+    {
+        "name": "Birman",
+        "size": "Large",
+        "life_expectancy": 16,
+        "origin": "France",
+        "personality": "Affectionate, Gentle, Quiet"
+    },
+    {
+        "name": "British Shorthair",
+        "size": "Large",
+        "life_expectancy": 18,
+        "origin": "United Kingdom",
+        "personality": "Calm, Easygoing, Independent"
+    },
+    {
+        "name": "Maine Coon",
+        "size": "Large",
+        "life_expectancy": 13,
+        "origin": "United States",
+        "personality": "Gentle, Friendly, Playful"
+    },
+    {
+        "name": "Persian",
+        "size": "Medium",
+        "life_expectancy": 15,
+        "origin": "Iran",
+        "personality": "Affectionate, Gentle, Quiet"
+    },
+    {
+        "name": "Ragdoll",
+        "size": "Large",
+        "life_expectancy": 15,
+        "origin": "United States",
+        "personality": "Affectionate, Gentle, Playful"
+    },
+    {
+        "name": "Siamese",
+        "size": "Medium",
+        "life_expectancy": 14,
+        "origin": "Thailand",
+        "personality": "Active, Energetic, Vocal"
+    },
+    {
+        "name": "Sphynx",
+        "size": "Medium",
+        "life_expectancy": 15,
+        "origin": "Canada",
+        "personality": "Affectionate, Energetic, Social"
+    },
+    {
+        "name": "Mixed Breed",
+        "size": "Varies",
+        "life_expectancy": 14,
+        "origin": "Varies",
+        "personality": "Varies"
+    }
+]

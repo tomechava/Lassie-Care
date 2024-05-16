@@ -59,8 +59,17 @@ def pets(request):
     return render(request, 'pets.html', {'pets': pets})
 
 @login_required
-def pet_add(request):
+def pet_new(request):
+    if request.method == 'POST':
+        pet_type = request.POST.get('petType')
+        return redirect('pet_add', pet_type=pet_type)
+    else:
+        return render(request, 'pet_new.html')
+
+@login_required
+def pet_add(request, pet_type):
     if(request.method == 'POST'):
+        type = pet_type
         default_image = 'static/images/DOG_DEFAULT.png'
         pet_image = request.FILES.get('petImage', default_image)
         pet_name = request.POST.get('petName')
@@ -69,11 +78,18 @@ def pet_add(request):
         pet_size = request.POST.get('selSize')
         pet_medical_history = request.FILES.get('medicalHistory')
         pet_breed_id = request.POST.get('petBreed')
-        pet_breed = DogBreed.objects.get(id=pet_breed_id)
-        pet_allergies = [allergy.strip() for allergy in (request.POST.get('petAllergies')).split('\n') if allergy.strip()]
+        pet_allergies = request.POST.get('petAllergies')
+        if type == 'D':
+            pet_breed = DogBreed.objects.get(id=pet_breed_id)
+        elif type == 'C':
+            pet_breed = DogBreed.objects.get(id=pet_breed_id)
+        else:
+            pet_breed = None
+        
         
         # Create PetProfile instance and link it to the OwnerProfile
         pet = PetProfile.objects.create(
+            petType=type,
             ownerprofile=request.user.ownerprofile,
             petImage=pet_image,
             namePet=pet_name,
@@ -83,6 +99,7 @@ def pet_add(request):
             medicalHistory=pet_medical_history,
             breed=pet_breed,
             allergies=pet_allergies
+            
         )
         
         pet.save()
@@ -91,6 +108,7 @@ def pet_add(request):
     
     breeds = DogBreed.objects.all()
     return render(request, 'pet_add.html', {'breeds': breeds})
+
 
 
 @login_required

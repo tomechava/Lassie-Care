@@ -1,0 +1,41 @@
+{% extends 'base_template.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-brownprimary">New Pet</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h3 class="text-brownprimary">Choose your pet type:</h3>
+        </div>
+    </div>
+    <form method="POST"> 
+        {% csrf_token %}
+        <div class="row ">
+            <div class="offset-lg-1 col-lg-4 col-6">
+                <div class="pet-type-image-wrapper">
+                    <input type="radio" id="petType" name="petType" class="form-control" value="D" id="dog">
+                    <img src="{% static 'images/DOG_DEFAULT.png' %}" class="img-fluid rounded" alt="Dog Image">
+                    <div class="pet-type-overlay rounded">Select</div>
+                </div>
+            </div>
+            <div class="offset-lg-2 col-lg-4 col-6">
+                <div class="pet-type-image-wrapper">
+                    <input type="radio" id="petType" name="petType" class="form-control" value="C" id="cat">
+                    <img src="{% static 'images/CAT_DEFAULT.png' %}" class="img-fluid rounded" alt="Cat Image">
+                    <div class="pet-type-overlay rounded">Select</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center my-5">
+                <button type="submit" class="btn btn-brownprimary">Continue</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}
