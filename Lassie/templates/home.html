@@ -1,6 +1,7 @@
 {% extends 'base_template.html' %}
 {% load static %}
 {% block content %}
+{% if user.is_authenticated %}
 <!-- DAILY TASKS SECTION-->
 <div class="row">
   <div class="col-8 offset-2">
@@ -32,7 +33,7 @@
 </div>
 
 <!-- DIVISION -->
-
+{% else %}
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="utf-8">
@@ -262,7 +263,7 @@
       </div>
     </div>
   </section>
-
+{% endif %}
 {% endblock content %}
 
 

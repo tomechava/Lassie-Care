@@ -1,5 +1,5 @@
 {% extends 'base_template.html' %}
-
+{% load static %}
 {% block content %}
 <div class="container">
     <div class="row">
@@ -10,12 +10,12 @@
     <div class="card mb-5">
         <div class="row g-lg-0">
             <div class="col-lg-4 col-12">
-                <img src="{% if pet.petImage != 'static/images/DOG_DEFAULT.png' and pet.petImage != 'static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}../{{pet.petImage}}{% endif %}" class="card-img-top" alt="...">
+                <img src="{% if pet.petImage != 'static/images/DOG_DEFAULT.png' and pet.petImage != 'static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}{{pet.petImage}}{% endif %}" class="card-img-top" alt="...">
             </div>
             <div class="col-lg-8 col-12">
                 <div class="card-body">
                     <h3 class="card-title">{{ pet.namePet }}</h3>
-                    <p class="card-text">Breed: {{ pet.breed }}</p>
+                    <p class="card-text">Breed: {{ pet.breed.name }}</p>
                     <p class="card-text">Age: {{ pet.age }}</p>
                     <p class="card-text">Weight: {{ pet.weight }} lbs</p>
                     <p class="card-text">Size: {{ pet.size }}</p>
