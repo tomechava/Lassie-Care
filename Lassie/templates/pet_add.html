@@ -1,23 +1,13 @@
 {% extends 'base_template.html' %}
 {% block content %}
 <div class="container">
-    <div class="row py-5">
-        <div class="col-12 col-lg-11 offset-lg-1">
-            <h2 class="text-brownprimary">Pet Profile</h2>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-brownprimary">New {{ petType }} Profile</h2>
         </div>
     </div>
     <form action="#" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        <div class="row">
-            <div class="pb-3 offset-lg-2 col-lg-8 col-12">
-                <label for="petType">Type:</label>
-                <select name="petType" id="petType" class="form-control">
-                    <option value="D" selected>Dog</option>
-                    <option value="C">Cat</option>
-                    <option value="O">Other</option>
-                </select>
-            </div>
-        </div>
         <div class="row">
             <div class="pb-3  offset-lg-2 col-lg-8 col-12">
                 <label for="petImage">Image:</label>

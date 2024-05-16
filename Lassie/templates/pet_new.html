@@ -12,27 +12,23 @@
             <h3 class="text-brownprimary">Choose your pet type:</h3>
         </div>
     </div>
-    <form method="POST"> 
+    <form id="pet-type-selection-form" method="POST">
+        <!-- Include CSRF token for security -->
         {% csrf_token %}
-        <div class="row ">
-            <div class="offset-lg-1 col-lg-4 col-6">
-                <div class="pet-type-image-wrapper">
-                    <input type="radio" id="petType" name="petType" class="form-control" value="D" id="dog">
-                    <img src="{% static 'images/DOG_DEFAULT.png' %}" class="img-fluid rounded" alt="Dog Image">
-                    <div class="pet-type-overlay rounded">Select</div>
-                </div>
+        <div class="row mb-5 pb-5">
+            <div class="col-6 text-center col-lg-3 offset-lg-2">
+                <label class="pet-type-image-wrapper">
+                    <input type="radio" name="petType" id="petType" value="D" onchange="this.form.submit()">
+                    <img src="{% static 'images/DOG_DEFAULT.png' %}" alt="Dog">
+                    <div class="overlay rounded">Select</div>
+                </label>
             </div>
-            <div class="offset-lg-2 col-lg-4 col-6">
-                <div class="pet-type-image-wrapper">
-                    <input type="radio" id="petType" name="petType" class="form-control" value="C" id="cat">
-                    <img src="{% static 'images/CAT_DEFAULT.png' %}" class="img-fluid rounded" alt="Cat Image">
-                    <div class="pet-type-overlay rounded">Select</div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center my-5">
-                <button type="submit" class="btn btn-brownprimary">Continue</button>
+            <div class="col-6 text-center col-lg-3 offset-lg-2">
+                <label class="pet-type-image-wrapper">
+                    <input type="radio" name="petType" id="petType" value="C" onchange="this.form.submit()">
+                    <img src="{% static 'images/CAT_DEFAULT.png' %}" alt="Cat">
+                    <div class="overlay rounded">Select</div>
+                </label>
             </div>
         </div>
     </form>

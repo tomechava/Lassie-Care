@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from .models import OwnerProfile, PetProfile, DogBreed
+from .models import OwnerProfile, PetProfile, DogBreed, CatBreed, Breed
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
@@ -70,19 +70,24 @@ def pet_new(request):
 def pet_add(request, pet_type):
     if(request.method == 'POST'):
         type = pet_type
-        default_image = 'static/images/DOG_DEFAULT.png'
+        if type == 'C':
+            default_image = 'static/images/CAT_DEFAULT.png'
+        else:
+            default_image = 'static/images/DOG_DEFAULT.png'
         pet_image = request.FILES.get('petImage', default_image)
         pet_name = request.POST.get('petName')
         pet_weight = request.POST.get('petWeight')
         pet_age = request.POST.get('petAge')
         pet_size = request.POST.get('selSize')
         pet_medical_history = request.FILES.get('medicalHistory')
-        pet_breed_id = request.POST.get('petBreed')
         pet_allergies = request.POST.get('petAllergies')
+        
+        pet_breed_id = request.POST.get('petBreed')
+
         if type == 'D':
-            pet_breed = DogBreed.objects.get(id=pet_breed_id)
+            pet_breed = Breed.objects.get(dogBreed=pet_breed_id)
         elif type == 'C':
-            pet_breed = DogBreed.objects.get(id=pet_breed_id)
+            pet_breed = Breed.objects.get(catBreed=pet_breed_id)
         else:
             pet_breed = None
         
@@ -106,8 +111,18 @@ def pet_add(request, pet_type):
         
         return redirect('pets')
     
-    breeds = DogBreed.objects.all()
-    return render(request, 'pet_add.html', {'breeds': breeds})
+    if pet_type == 'D':
+        breeds = DogBreed.objects.all()
+        petType='Dog'
+    elif pet_type == 'C':
+        petType='Cat'
+        breeds = CatBreed.objects.all()
+    else:
+        petType=''
+        breeds = None
+        
+    
+    return render(request, 'pet_add.html', {'breeds': breeds, 'petType': petType})
 
 
 

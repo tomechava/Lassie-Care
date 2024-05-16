@@ -42,6 +42,7 @@ class CatBreed(models.Model):
         return self.name
 
 class Breed(models.Model):
+    name = models.CharField(max_length=100, default='Breed')
     dogBreed = models.ForeignKey(DogBreed, on_delete=models.CASCADE, null=True, blank=True)
     catBreed = models.ForeignKey(CatBreed, on_delete=models.CASCADE, null=True, blank=True)
 

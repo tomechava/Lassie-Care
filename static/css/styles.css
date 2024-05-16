@@ -50,25 +50,23 @@ p, h1, h2, h3, h4, h5, h6 {
 /*PET TYPE CHOOSING*/
 .pet-type-image-wrapper {
     position: relative;
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-}
-.pet-type-image-wrapper img {
-    width: 100%;
-    display: block;
-}
-.pet-type-image-wrapper input[type="radio"] {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    cursor: hand;
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
 }
 
-.pet-type-overlay {
+.pet-type-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: opacity 0.3s ease;
+}
+
+.pet-type-image-wrapper:hover img {
+    opacity: 0.7;
+}
+
+.pet-type-image-wrapper .overlay {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -77,7 +75,7 @@ p, h1, h2, h3, h4, h5, h6 {
     height: 100%;
     width: 100%;
     opacity: 0;
-    transition: .3s ease;
+    transition: opacity 0.3s ease;
     background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
@@ -86,11 +84,17 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: 24px;
 }
 
-.pet-type-image-wrapper:hover .pet-type-overlay {
+.pet-type-image-wrapper:hover .overlay {
     opacity: 1;
 }
-.pet-type-image-wrapper input[type="radio"]:checked ~ .pet-type-overlay {
-    opacity: 1;
+
+.pet-type-image-wrapper input[type="radio"] {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 20px;
+    height: 20px;
+    opacity: 0;
 }
 /*PET TYPE CHOOSING*/
 /*PET EDIT*/
