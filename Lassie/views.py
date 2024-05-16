@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
 from django.contrib import messages
+from django.templatetags.static import static
 # Create your views here.
 
 def home(request):
@@ -71,9 +72,9 @@ def pet_add(request, pet_type):
     if(request.method == 'POST'):
         type = pet_type
         if type == 'C':
-            default_image = 'static/images/CAT_DEFAULT.png'
+            default_image = '/static/images/CAT_DEFAULT.png'
         else:
-            default_image = 'static/images/DOG_DEFAULT.png'
+            default_image = '/static/images/DOG_DEFAULT.png'
         pet_image = request.FILES.get('petImage', default_image)
         pet_name = request.POST.get('petName')
         pet_weight = request.POST.get('petWeight')
@@ -161,7 +162,11 @@ def pet_delete(request, pet_id):
 @login_required
 def pet(request, pet_id):
     pet = PetProfile.objects.get(id=pet_id)
-    return render(request, 'pet_view.html', {'pet': pet})
+    if pet.petImage == '/static/images/DOG_DEFAULT.png' or pet.petImage == '/static/images/CAT_DEFAULT.png':
+        pet_image = pet.petImage
+    else:
+        pet_image = pet.petImage.url
+    return render(request, 'pet_view.html', {'pet': pet, 'pet_image': pet_image})
 
 @login_required
 def profile(request):

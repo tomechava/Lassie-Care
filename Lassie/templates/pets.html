@@ -23,12 +23,14 @@
         {% for pet in pets %}
             <div class="col-12 col-lg-4 pb-3">
                 <div class="card card-dark">
-                    <img src="{% if pet.petImage != 'static/images/DOG_DEFAULT.png' and pet.petImage != 'static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}{{pet.petImage}}{% endif %}" class="card-img-top pet-card-img" alt="...">
+                    <img src="{% if pet.petImage != '/static/images/DOG_DEFAULT.png' and pet.petImage != '/static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}{{pet.petImage}}{% endif %}" class="card-img-top pet-card-img" alt="...">
                     <div class="card-body pet-card-desc">
                         <h3 class="card-title">{{ pet.namePet }}</h3>
-                        <h6 class="card-text">{{ pet.breed }}</h6>
+                        <h6 class="card-text">{{ pet.breed.name }}</h6>
                         <h6 class="card-text">{{ pet.age }}y/o</h6>
-                        <a href="{% url 'pet' pet.id %}" class="btn btn-brownprimary">View Profile</a>
+                        <div class="text-center">
+                            <a href="{% url 'pet' pet.id %}" class="btn btn-brownprimary">View Profile</a>
+                        </div>
                     </div>
                 </div>
             </div>

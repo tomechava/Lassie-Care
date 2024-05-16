@@ -10,7 +10,7 @@
     <div class="card mb-5">
         <div class="row g-lg-0">
             <div class="col-lg-4 col-12">
-                <img src="{% if pet.petImage != 'static/images/DOG_DEFAULT.png' and pet.petImage != 'static/images/CAT_DEFAULT.png' %}{{pet.petImage.url}}{% else %}{{pet.petImage}}{% endif %}" class="card-img-top" alt="...">
+                <img src="{{ pet_image }}" class="card-img-top pet-card-img" alt="...">
             </div>
             <div class="col-lg-8 col-12">
                 <div class="card-body">
@@ -20,6 +20,7 @@
                     <p class="card-text">Weight: {{ pet.weight }} lbs</p>
                     <p class="card-text">Size: {{ pet.size }}</p>
                     <p class="card-text">Medical Conditions:</p>
+                    <p>{{ pet_image }}</p>
                     <p class="card-text">Allergies:{{pet.allergies}}</p>
                     <p class="card-text">Medical History: <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a></p>
                     <a href="/pet/{{pet.id}}/edit" class="btn btn-brownprimary">Edit <i class="fas fa-edit"></i></a>
