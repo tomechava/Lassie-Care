@@ -25,18 +25,30 @@ class asklassiechat(View):
         petsInfo = PetProfile.objects.filter(ownerprofile=request.user.ownerprofile)
         if petsInfo:
             pets = f'Hi, my name is {ownerName} and I currently have the following pets:'
+            n = 1
             for pet in petsInfo:
-                n = 1
                 pet_name = pet.namePet
                 pet_breed = pet.breed
                 pet_age = pet.age
                 pet_weight = pet.weight
                 pet_size = pet.size
                 pet_allergies = pet.allergies
-                pets += f'\n\n#{n}.Pet Name: {pet_name}\nBreed: {pet_breed}\nAge: {pet_age}\nWeight: {pet_weight}\nSize: {pet_size}\nAllergies: {pet_allergies}'
+                if pet.petType == 'D':
+                    pet_type = 'Dog'
+                elif pet.petType == 'C':
+                    pet_type = 'Cat'
+                else:
+                    pet_type = 'Animal'
+                    
+                pets += f'\n\n{n}. Its name is {pet_name}, it is a {pet_type} and it is {pet_age} years old. It weighs {pet_weight} kg, is {pet_size} in size'
+                
+                if pet_allergies!= '':
+                    pets += f'and has the following allergies: {pet_allergies}.'
+                else:
+                    pets += '.'
                 n += 1
             
-        text = 'I have a question about my pets: '
+        text = 'I have a question about some of my pets: '
         text += request.POST.get('message')
         prompt = f'{pets}\n\n{text}'
         
