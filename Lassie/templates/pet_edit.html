@@ -1,7 +1,7 @@
 {% extends 'base_template.html' %}
 {% block content %}
 <div class="container">
-    <div class="row pt-3">
+    <div class="row mb-3">
         <div class="col-12">
             <h2 class="text-brownprimary">{{ pet.namePet }}'s Profile</h2>
         </div>
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-4 col-12">
                 <div class="image-upload-wrapper">
-                    <img src="{{ pet.petImage.url }}" class="img-fluid rounded" alt="Pet Image">
+                    <img src="{{ pet_image }}" class="img-fluid rounded" alt="Pet Image">
                     <input type="file" id="petImage" name="petImage" class="form-control" {% if not pet.petImage %}required{% endif %}>
                 </div>
             </div>
@@ -43,8 +43,8 @@
                 </div>
                 <div class="row">
                     <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                        <label for="medicalConditions">Medical Conditions:</label>
-                        <input type="text" id="medicalConditions" name="medicalConditions" class="form-control">
+                        <label for="allergies">Allergies:</label>
+                        <input type="text" id="petAllergies" name="petAllergies" class="form-control" value="{{ pet.allergies }}" required>
                     </div>
                     <div class="pb-3 col-lg-4 col-12">
                         <label for="selSize">Size:</label>

@@ -7,22 +7,69 @@
             <h2>{{ pet.namePet }}'s Profile</h2>
         </div>
     </div>
-    <div class="card mb-5">
-        <div class="row g-lg-0">
-            <div class="col-lg-4 col-12">
-                <img src="{{ pet_image }}" class="card-img-top pet-card-img" alt="...">
+    <div class="row g-lg-0">
+        <div class="col-lg-4 col-12">
+            <img src="{{ pet_image }}" class="img-fluid" alt="...">
+        </div>
+        <div class="col-lg-8 col-12">
+            <div class="row my-3">
+                <div class="col-4">
+                    <h4>Name:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="petName" name="petName" class="form-control" value="{{ pet.namePet }}" disabled>
+                </div>
             </div>
-            <div class="col-lg-8 col-12">
-                <div class="card-body">
-                    <h3 class="card-title">{{ pet.namePet }}</h3>
-                    <p class="card-text">Breed: {{ pet.breed.name }}</p>
-                    <p class="card-text">Age: {{ pet.age }}</p>
-                    <p class="card-text">Weight: {{ pet.weight }} lbs</p>
-                    <p class="card-text">Size: {{ pet.size }}</p>
-                    <p class="card-text">Medical Conditions:</p>
-                    <p>{{ pet_image }}</p>
-                    <p class="card-text">Allergies:{{pet.allergies}}</p>
-                    <p class="card-text">Medical History: <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a></p>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Breed:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="petBreed" name="petBreed" class="form-control" value="{{ pet.breed.name }}" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Age:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="number" id="petAge" name="petAge" class="form-control" value="{{ pet.age }}" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Weight:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="number" id="petWeight" name="petWeight" class="form-control" value="{{ pet.weight }}" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Size:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="petSize" name="petSize" class="form-control" value="{{ pet.size }}" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Allergies:</h4>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="petAllergies" name="petAllergies" class="form-control" value="{{ pet.allergies }}" disabled>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-4">
+                    <h4>Medical History:</h4>
+                </div>
+                <div class="col-8">
+                    <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center my-5">
                     <a href="/pet/{{pet.id}}/edit" class="btn btn-brownprimary">Edit <i class="fas fa-edit"></i></a>
                     <a href="/pet/{{pet.id}}/delete" class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></a>
                     <a href="/pets" class="btn btn-brownprimary">Back <i class="fas fa-arrow-left"></i></a>

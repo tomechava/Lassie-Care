@@ -138,6 +138,7 @@ def pet_edit(request, pet_id):
         pet.weight = request.POST.get('petWeight')
         pet.age = request.POST.get('petAge')
         pet.size = request.POST.get('selSize')
+        pet.allergies = request.POST.get('petAllergies')
         if request.FILES.get('medicalHistory'):
             pet.medicalHistory = request.FILES.get('medicalHistory')
             
@@ -150,8 +151,20 @@ def pet_edit(request, pet_id):
         return redirect('pets')
     
     pet = PetProfile.objects.get(id=pet_id)
-    breeds = DogBreed.objects.all()
-    return render(request, 'pet_edit.html', {'pet': pet, 'breeds': breeds})
+    #Breeds
+    if pet.petType == 'D':
+        breeds = DogBreed.objects.all()
+    elif pet.petType == 'C':
+        breeds = CatBreed.objects.all()
+    else:
+        breeds = None
+    #Image
+    if pet.petImage == '/static/images/DOG_DEFAULT.png' or pet.petImage == '/static/images/CAT_DEFAULT.png':
+        pet_image = pet.petImage
+    else:
+        pet_image = pet.petImage.url
+        
+    return render(request, 'pet_edit.html', {'pet': pet, 'breeds': breeds, 'pet_image': pet_image})
 
 @login_required
 def pet_delete(request, pet_id):
