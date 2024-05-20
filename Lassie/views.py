@@ -10,33 +10,22 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
 from django.contrib import messages
 from django.templatetags.static import static
-from datetime import datetime
-import pytz
+from django.utils import timezone
 
 # Create your views here.
-bogota_tz = pytz.timezone('America/Bogota')
 def home(request):
-    submitted = False
     if request.method == "POST":
-        form = DailyTaskForm(request.POST)
         pet_id = request.POST.get('pet')
         pet = PetProfile.objects.get(id=pet_id)
         walks = request.POST.get('dailyWalks')
         food = request.POST.get('dailyFood')
         water = request.POST.get('dailyWater')
-        utc_now = datetime.now(pytz.utc)
-        datetime = utc_now.astimezone(bogota_tz)
+        datetime = timezone.now()
         owner = OwnerProfile.objects.get(user=request.user)
         DailyTasks.objects.create(ownerprofile=owner, petprofile=pet, walks=walks, food=food, water=water, datetime=datetime)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/?submitted=True')
-    else:
-        form = DailyTaskForm
-        if 'submitted' in request.GET:
-            submitted=True        
+        
     user_pets = PetProfile.objects.filter(ownerprofile=request.user.ownerprofile)
-    return render(request, 'home.html', {'form':form, 'submitted':submitted, 'user_pets':user_pets})
+    return render(request, 'home.html', {'user_pets':user_pets})
 
 def register(request):
     if request.method == 'POST':

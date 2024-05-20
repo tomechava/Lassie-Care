@@ -11,14 +11,7 @@
                   <h2 class="text-brownprimary"><i class="fas fa-tasks"></i> Daily Tasks</h2>
               </div>
           </div>
-          {%if submitted%}
-          <div class="row">
-              <div class="col-12 text-center">
-                  <div class="alert alert-success" role="alert">
-                      <strong>Success!</strong> Your daily tasks have been updated.
-                  </div>
-              </div>
-          {%elif user_pets%}
+          {%if user_pets%}
           <form action="#" method="POST"> 
               {% csrf_token%}
               <div class="row">
