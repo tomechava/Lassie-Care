@@ -133,7 +133,7 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = '/login'
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
 
 # Media files (user-uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

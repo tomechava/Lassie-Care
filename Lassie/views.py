@@ -4,7 +4,6 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
 from .models import OwnerProfile, PetProfile, DogBreed, CatBreed, Breed, DailyTasks
-from .forms import DailyTaskForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
@@ -13,6 +12,8 @@ from django.templatetags.static import static
 from django.utils import timezone
 
 # Create your views here.
+def welcome(request):
+    return render(request, 'welcome.html')
 def home(request):
     if request.method == "POST":
         pet_id = request.POST.get('pet')

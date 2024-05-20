@@ -25,7 +25,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('chatbot/', include('django.contrib.auth.urls')),  # include the auth urls for login, logout, etc.
     path('admin/', admin.site.urls),    #Admin page
-    path('', LassieViews.home, name='home'),     #Home page
+    path('', LassieViews.welcome, name='welcome'),     #Welcome page
+    path('home', LassieViews.home, name='home'),     #Home page
     path('register', LassieViews.register, name='register'),    #Register page
     path('pets', LassieViews.pets, name='pets'),       #List of pets
     path('pet/new', LassieViews.pet_new, name='pet_new'),      #Register a new pet
