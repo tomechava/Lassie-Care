@@ -10,6 +10,9 @@ GEMINI-PRO API integration for Pet Care recommendations.
 Lassie's Care is a proyect developed by Tomas Echavarria, Daniela Arango and Rafael Palau.
 
 ## Libraries required
+
 pip install markdown
+
 pip install -q -U google-generativeai
+
 pip install "django-phonenumber-field[phonenumberslite]"
