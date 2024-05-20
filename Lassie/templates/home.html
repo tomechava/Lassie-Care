@@ -8,22 +8,44 @@
       <div class="card my-5">
           <div class="row pt-3 pb-3">
               <div class="col-12 col-lg-12 text-center">
-                  <h2 class="text-brownprimary">Daily Tasks</h2>
+                  <h2 class="text-brownprimary"><i class="fas fa-tasks"></i> Daily Tasks</h2>
               </div>
           </div>
           {%if submitted%}
-                    Your daily tasks are completed!!
-          {%else%}
-          <form action=""  method="POST"> 
+          <div class="row">
+              <div class="col-12 text-center">
+                  <div class="alert alert-success" role="alert">
+                      <strong>Success!</strong> Your daily tasks have been updated.
+                  </div>
+              </div>
+          {%elif user_pets%}
+          <form action="#" method="POST"> 
+              {% csrf_token%}
+              <div class="row">
+                <div class="pb-3 col-lg-8 offset-2 col-12">
+                  <label for="pet">Select a pet to update their information:</label>
+                  <select name="pet" id="pet" class="form-control">
+                      <option value="" selected disabled>Select a pet</option>
+                      {% for pet in user_pets %}
+                          <option value="{{pet.id}}">{{pet.namePet}}</option>
+                      {% endfor %}
+                  </select>
+                </div>
+              </div>
               <div class="row">
                   <div class="pb-3 offset-lg-2 col-lg-4 col-12">
-                    {% csrf_token%}
-                      <label for="txtDailyWalks">Walks today:</label>
-                      <input type="number" class="form-control" id="txtDailyWalks" name="txtDailyWalks">
+                      <label for="dailyWater">Water today:</label>
+                      <input type="number" class="form-control" id="dailyWater" name="dailyWater">
                   </div>
                   <div class="pb-3 col-lg-4 col-12">
-                      <label for="txtDailyFood">Foods & Water today:</label>
-                      <input type="number" class="form-control" id="txtDailyFood" name="txtDailyFood">
+                      <label for="dailyFood">Foods today:</label>
+                      <input type="number" class="form-control" id="dailyFood" name="dailyFood">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="pb-3 col-lg-8 offset-2 col-12">
+                      <label for="dailyWalks">Walks today:</label>
+                      <input type="number" class="form-control" id="dailyWalks" name="dailyWalks">
                   </div>
               </div>
               <div class="row pb-3">
@@ -32,6 +54,14 @@
                   </div>
               </div>
           </form>
+          {%else%}
+          <div class="row">
+            <div class="col-12 text-center">
+                <h3 class="text-brown
+                primary">You don't have any pets yet</h3>
+                <a href="{% url 'pet_register' %}" class="btn btn-brownprimary">Add a pet</a>
+            </div>
+          </div>
           {% endif %}
       </div>
   </div>

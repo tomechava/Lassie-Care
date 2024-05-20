@@ -5,4 +5,4 @@ from .models import DailyTasks
 class DailyTaskForm(ModelForm):
     class Meta:
         model = DailyTasks
-        fields=('walks' , 'food')
+        fields = ('ownerprofile', 'petprofile', 'walks', 'food', 'water', 'datetime')

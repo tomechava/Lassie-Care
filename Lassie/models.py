@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
-
+from django.utils import timezone
 # Create your models here.
 class OwnerProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=False, blank=False)  # Connect to Django's User model
@@ -94,8 +94,10 @@ class PetProfile(models.Model):
 class DailyTasks(models.Model):
     ownerprofile = models.ForeignKey(OwnerProfile, on_delete=models.CASCADE)
     petprofile = models.ForeignKey(PetProfile, on_delete=models.CASCADE)
-    walks = models.CharField(max_length=2)
-    food = models.CharField(max_length=2)
+    walks = models.IntegerField(default=0)
+    food = models.IntegerField(default=0)
+    water = models.IntegerField(default=0)
+    datetime = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return f"{self.ownerprofile.user}'s task for {self.petprofile.namePet}"
