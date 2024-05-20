@@ -11,9 +11,13 @@
                   <h2 class="text-brownprimary">Daily Tasks</h2>
               </div>
           </div>
-          <form method="POST">
+          {%if submitted%}
+                    Your daily tasks are completed!!
+          {%else%}
+          <form action=""  method="POST"> 
               <div class="row">
                   <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                    {% csrf_token%}
                       <label for="txtDailyWalks">Walks today:</label>
                       <input type="number" class="form-control" id="txtDailyWalks" name="txtDailyWalks">
                   </div>
@@ -28,6 +32,7 @@
                   </div>
               </div>
           </form>
+          {% endif %}
       </div>
   </div>
 </div>

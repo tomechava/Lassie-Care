@@ -40,6 +40,7 @@ class CatBreed(models.Model):
 
     def __str__(self):
         return self.name
+    
 
 class Breed(models.Model):
     name = models.CharField(max_length=100, default='Breed')
@@ -89,4 +90,12 @@ class PetProfile(models.Model):
     def __str__(self):
         return self.namePet
     
+
+class DailyTasks(models.Model):
+    ownerprofile = models.ForeignKey(OwnerProfile, on_delete=models.CASCADE)
+    petprofile = models.ForeignKey(PetProfile, on_delete=models.CASCADE)
+    walks = models.CharField(max_length=2)
+    food = models.CharField(max_length=2)
     
+    def __str__(self):
+        return f"{self.ownerprofile.user}'s task for {self.petprofile.namePet}"

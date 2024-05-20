@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
-from .models import OwnerProfile, PetProfile, DogBreed, CatBreed, Breed
+from .models import OwnerProfile, PetProfile, DogBreed, CatBreed, Breed, DailyTasks
+from .forms import DailyTaskForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login, logout
 from datetime import datetime
@@ -11,7 +13,18 @@ from django.templatetags.static import static
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    submitted = False
+    if request.method == "POST":
+        form = DailyTaskForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/home?submitted=True')
+    else:
+        form = DailyTaskForm
+        if 'submitted' in request.GET:
+            submitted=True        
+    
+    return render(request, 'home.html', {'form':form, 'submitted':submitted})
 
 def register(request):
     if request.method == 'POST':
@@ -191,3 +204,10 @@ def profile(request):
 def log_out(request):
     logout(request)
     return redirect('/')
+
+
+
+ 
+
+
+
