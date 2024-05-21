@@ -36,6 +36,7 @@ def register(request):
         username = request.POST.get('txtUsername')
         email = request.POST.get('txtEmail')
         password = request.POST.get('txtPassword')
+        enc_password = elibreria
         
         first_name = request.POST.get('txtFirstName')
         last_name = request.POST.get('txtLastName')
@@ -125,7 +126,7 @@ def pet_add(request, pet_type):
         )
         
         pet.save()
-        
+        #Rename image file
         if pet_image != '/static/images/CAT_DEFAULT.png' and pet_image != '/static/images/DOG_DEFAULT.png':
             file_extension = pet_image.name.split('.')[-1]
             new_filename = f"{pet.id}.{file_extension}"
@@ -135,7 +136,7 @@ def pet_add(request, pet_type):
             os.rename(f"media/pet_images/{old_filename}", f"media/pet_images/{new_filename}")
             pet.petImage = f"pet_images/{new_filename}"
             pet.save()
-        
+        #Rename medical history file
         if pet_medical_history:
             file_extension = pet_medical_history.name.split('.')[-1]
             new_filename = f"{pet.id}.{file_extension}"
@@ -190,6 +191,52 @@ def pet_edit(request, pet_id):
         
         pet.save()
         
+        #If image is edited
+        if request.FILES.get('petImage'):
+            #Get the old filename
+            old_filename = pet.petImage.name
+            if " " in old_filename:
+                old_filename = old_filename.replace(" ", "_")
+            #Delete old image
+            try:
+                os.remove(f"media/{pet.petImage}")
+            except:
+                pass
+            #Save new image
+            pet.petImage = request.FILES.get('petImage')
+            uploaded_filename = pet.petImage.name
+            pet.save()
+            #Rename image file
+            file_extension = pet.petImage.name.split('.')[-1]
+            new_filename = f"{pet.id}.{file_extension}"
+            os.rename(f"media/pet_images/{uploaded_filename}", f"media/pet_images/{new_filename}")
+            pet.petImage = f"pet_images/{new_filename}"
+            pet.save()
+            
+        #Rename medical history file
+        if request.FILES.get('medicalHistory'):
+            #Get the old filename
+            old_filename = pet.medicalHistory.name
+            if " " in old_filename:
+                old_filename = old_filename.replace(" ", "_")
+            #Delete old file
+            try:
+                os.remove(f"media/{pet.medicalHistory}")
+            except:
+                pass
+            #Save new file
+            pet.medicalHistory = request.FILES.get('medicalHistory')
+            uploaded_filename = pet.medicalHistory.name
+            pet.save()
+            #Rename medical history file
+            file_extension = pet.medicalHistory.name.split('.')[-1]
+            new_filename = f"{pet.id}.{file_extension}"
+            os.rename(f"media/medical_histories/{uploaded_filename}", f"media/medical_histories/{new_filename}")
+            pet.medicalHistory = f"medical_histories/{new_filename}"
+            pet.save()
+        
+        pet.save()
+        
         return redirect('pets')
     
     pet = PetProfile.objects.get(id=pet_id)
@@ -211,6 +258,18 @@ def pet_edit(request, pet_id):
 @login_required
 def pet_delete(request, pet_id):
     pet = PetProfile.objects.get(id=pet_id)
+    #Delete images
+    if pet.petImage != '/static/images/CAT_DEFAULT.png' and pet.petImage != '/static/images/DOG_DEFAULT.png':
+        try:
+            os.remove(f"media/{pet.petImage}")
+        except:
+            pass
+    #Delete medical history
+    if pet.medicalHistory:
+        try:
+            os.remove(f"media/{pet.medicalHistory}")
+        except:
+            pass
     pet.delete()
     return redirect('pets')
 

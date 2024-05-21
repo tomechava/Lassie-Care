@@ -45,7 +45,11 @@
             <div class="row mb-3">
                 <div class="pb-3 offset-lg-2 col-lg-4 col-12">
                     <label>Medical History:</label>
-                    <a href="{{ pet.medicalHistory }}" class="btn btn-primary" target="_blank">View <i class="fas fa-file-medical"></i></a>
+                    {% if pet.medicalHistory %}
+                    <a href="{{ pet.medicalHistory.url }}" download="{{pet.namePet}}_medical_story" class="btn btn-primary" target="_blank">View {{pet.medicalHistory.url}}<i class="fas fa-file-medical"></i></a>
+                    {% else %}
+                    <p>No medical history available</p>
+                    {% endif %}
                 </div>
             </div>
             <div class="row">
