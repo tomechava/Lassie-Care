@@ -158,7 +158,14 @@ def pet_edit(request, pet_id):
             pet.medicalHistory = request.FILES.get('medicalHistory')
             
         pet_breed_id = request.POST.get('petBreed')
-        pet_breed = DogBreed.objects.get(id=pet_breed_id)
+
+        if pet.petType == 'D':
+            pet_breed = Breed.objects.get(dogBreed=pet_breed_id)
+        elif pet.petType == 'C':
+            pet_breed = Breed.objects.get(catBreed=pet_breed_id)
+        else:
+            pet_breed = None
+            
         pet.breed = pet_breed
         
         pet.save()

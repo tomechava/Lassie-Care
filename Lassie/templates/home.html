@@ -15,7 +15,7 @@
           <form action="#" method="POST"> 
               {% csrf_token%}
               <div class="row">
-                <div class="pb-3 col-lg-8 offset-2 col-12">
+                <div class="pb-3 col-lg-8 offset-lg-2 col-10 offset-1">
                   <label for="pet">Select a pet to update their information:</label>
                   <select name="pet" id="pet" class="form-control">
                       <option value="" selected disabled>Select a pet</option>
@@ -26,17 +26,17 @@
                 </div>
               </div>
               <div class="row">
-                  <div class="pb-3 offset-lg-2 col-lg-4 col-12">
+                  <div class="pb-3 offset-lg-2 col-lg-4 col-10 offset-1">
                       <label for="dailyWater">Water today:</label>
                       <input type="number" class="form-control" id="dailyWater" name="dailyWater">
                   </div>
-                  <div class="pb-3 col-lg-4 col-12">
+                  <div class="pb-3 col-lg-4 col-10 offset-1">
                       <label for="dailyFood">Foods today:</label>
                       <input type="number" class="form-control" id="dailyFood" name="dailyFood">
                   </div>
               </div>
               <div class="row">
-                  <div class="pb-3 col-lg-8 offset-2 col-12">
+                  <div class="pb-3 col-lg-8 offset-lg-2 col-10 offset-1">
                       <label for="dailyWalks">Walks today:</label>
                       <input type="number" class="form-control" id="dailyWalks" name="dailyWalks">
                   </div>
