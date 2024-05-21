@@ -12,7 +12,7 @@ from django.templatetags.static import static
 from django.utils import timezone
 from django.conf import settings
 import os
-
+import bcrypt
 # Create your views here.
 def welcome(request):
     return render(request, 'welcome.html')
@@ -37,7 +37,8 @@ def register(request):
         username = request.POST.get('txtUsername')
         email = request.POST.get('txtEmail')
         password = request.POST.get('txtPassword')
-        enc_password = elibreria
+        salt = bcrypt.gensalt()
+        hashed_password = bcrypt.hashpw(password, salt)
         
         first_name = request.POST.get('txtFirstName')
         last_name = request.POST.get('txtLastName')
