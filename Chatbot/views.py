@@ -48,7 +48,7 @@ class asklassiechat(View):
                     pets += '.'
                 n += 1
             
-        text = 'I have a question about some of my pets: '
+        text = 'Now i will ask you a question regarding one or more of my pets which are the ones i have just mentioned. Your role wil be to act as an advisor to me, guide me to take the best decisions as a pet owner and provide the accurate information i need to take care of my pets. My question or concern is:'
         text += request.POST.get('message')
         prompt = f'{pets}\n\n{text}'
         
