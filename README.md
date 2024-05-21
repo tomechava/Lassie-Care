@@ -16,3 +16,5 @@ pip install markdown
 pip install -q -U google-generativeai
 
 pip install "django-phonenumber-field[phonenumberslite]"
+
+pip install bcrypt
