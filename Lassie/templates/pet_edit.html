@@ -1,7 +1,7 @@
 {% extends 'base_template.html' %}
 {% block content %}
 <div class="container">
-    <div class="row mb-3">
+    <div class="row">
         <div class="col-12">
             <h2 class="text-brownprimary">{{ pet.namePet }}'s Profile</h2>
         </div>
@@ -44,7 +44,7 @@
                 <div class="row">
                     <div class="pb-3 offset-lg-2 col-lg-4 col-12">
                         <label for="allergies">Allergies:</label>
-                        <input type="text" id="petAllergies" name="petAllergies" class="form-control" value="{{ pet.allergies }}" required>
+                        <input type="text" id="petAllergies" name="petAllergies" class="form-control" value="{{ pet.allergies }}">
                     </div>
                     <div class="pb-3 col-lg-4 col-12">
                         <label for="selSize">Size:</label>
@@ -62,11 +62,16 @@
                         <input type="file" id="medicalHistory" name="medicalHistory" class="form-control" {% if not pet.medicalHistory %}required{% endif %}>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-12 text-center my-5">
+                        <button type="submit" class="btn btn-brownprimary">Update Profile</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-12 text-center my-5">
-                <button type="submit" class="btn btn-brownprimary">Update Profile</button>
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                    <a href="{% url 'pet' pet.id %}" class="btn btn-brownprimary"><i class="fas fa-arrow-left ml-2"></i> Back</a>
+                </div>
             </div>
         </div>
     </form>
