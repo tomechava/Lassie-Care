@@ -10,6 +10,7 @@ from datetime import datetime
 from django.contrib import messages
 from django.templatetags.static import static
 from django.utils import timezone
+from django.conf import settings
 import os
 
 # Create your views here.
@@ -101,7 +102,6 @@ def pet_add(request, pet_type):
         pet_allergies = request.POST.get('petAllergies')
         
         pet_breed_id = request.POST.get('petBreed')
-
         if type == 'D':
             pet_breed = Breed.objects.get(dogBreed=pet_breed_id)
         elif type == 'C':
@@ -126,25 +126,56 @@ def pet_add(request, pet_type):
         )
         
         pet.save()
-        #Rename image file
-        if pet_image != '/static/images/CAT_DEFAULT.png' and pet_image != '/static/images/DOG_DEFAULT.png':
-            file_extension = pet_image.name.split('.')[-1]
-            new_filename = f"{pet.id}.{file_extension}"
-            old_filename = pet_image.name
-            if " " in old_filename:
-                old_filename = old_filename.replace(" ", "_")
-            os.rename(f"media/pet_images/{old_filename}", f"media/pet_images/{new_filename}")
-            pet.petImage = f"pet_images/{new_filename}"
+        
+        media_root = settings.MEDIA_ROOT
+        
+        # If image is edited
+        if request.FILES.get('petImage'):
+            # Get the old filename
+            old_filename = pet.petImage.name
+            old_filepath = os.path.join(media_root, old_filename.replace(" ", "_"))
+            
+            # Delete old image
+            if os.path.exists(old_filepath):
+                os.remove(old_filepath)
+            
+            # Save new image
+            pet.petImage = request.FILES['petImage']
             pet.save()
-        #Rename medical history file
-        if pet_medical_history:
-            file_extension = pet_medical_history.name.split('.')[-1]
+
+            # Rename image file
+            file_extension = pet.petImage.name.split('.')[-1]
             new_filename = f"{pet.id}.{file_extension}"
-            old_filename = pet_medical_history.name
-            if " " in old_filename:
-                old_filename = old_filename.replace(" ", "_")
-            os.rename(f"media/medical_histories/{old_filename}", f"media/medical_histories/{new_filename}")
-            pet.medicalHistory = f"medical_histories/{new_filename}"
+            new_filepath = os.path.join(media_root, 'pet_images', new_filename)
+
+            uploaded_filepath = os.path.join(media_root, pet.petImage.name)
+            os.rename(uploaded_filepath, new_filepath)
+
+            pet.petImage.name = f"pet_images/{new_filename}"
+            pet.save()
+            
+        # Rename medical history file
+        if request.FILES.get('medicalHistory'):
+            # Get the old filename
+            old_filename = pet.medicalHistory.name
+            old_filepath = os.path.join(media_root, old_filename.replace(" ", "_"))
+            
+            # Delete old file
+            if os.path.exists(old_filepath):
+                os.remove(old_filepath)
+            
+            # Save new file
+            pet.medicalHistory = request.FILES['medicalHistory']
+            pet.save()
+
+            # Rename medical history file
+            file_extension = pet.medicalHistory.name.split('.')[-1]
+            new_filename = f"{pet.id}.{file_extension}"
+            new_filepath = os.path.join
+            uploaded_filepath = os.path.join(media_root, pet.medicalHistory.name)
+            os.rename(uploaded_filepath, new_filepath)
+            
+            pet.medicalHistory.name = f"medical_histories/{new_filename}"
             pet.save()
         
         return redirect('pets')
@@ -167,17 +198,12 @@ def pet_add(request, pet_type):
 def pet_edit(request, pet_id):
     if(request.method == 'POST'):
         pet = PetProfile.objects.get(id=pet_id)
-        if request.FILES.get('petImage'):
-            pet.petImage = request.FILES.get('petImage')
         
         pet.namePet = request.POST.get('petName')
         pet.weight = request.POST.get('petWeight')
         pet.age = request.POST.get('petAge')
         pet.size = request.POST.get('selSize')
         pet.allergies = request.POST.get('petAllergies')
-        if request.FILES.get('medicalHistory'):
-            pet.medicalHistory = request.FILES.get('medicalHistory')
-            
         pet_breed_id = request.POST.get('petBreed')
 
         if pet.petType == 'D':
@@ -219,11 +245,10 @@ def pet_edit(request, pet_id):
             old_filename = pet.medicalHistory.name
             if " " in old_filename:
                 old_filename = old_filename.replace(" ", "_")
+            
             #Delete old file
-            try:
-                os.remove(f"media/{pet.medicalHistory}")
-            except:
-                pass
+            os.remove(f"media/{pet.medicalHistory}")
+            
             #Save new file
             pet.medicalHistory = request.FILES.get('medicalHistory')
             uploaded_filename = pet.medicalHistory.name
@@ -234,8 +259,6 @@ def pet_edit(request, pet_id):
             os.rename(f"media/medical_histories/{uploaded_filename}", f"media/medical_histories/{new_filename}")
             pet.medicalHistory = f"medical_histories/{new_filename}"
             pet.save()
-        
-        pet.save()
         
         return redirect('pets')
     
