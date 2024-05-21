@@ -10,6 +10,7 @@ from datetime import datetime
 from django.contrib import messages
 from django.templatetags.static import static
 from django.utils import timezone
+import os
 
 # Create your views here.
 def welcome(request):
@@ -125,6 +126,26 @@ def pet_add(request, pet_type):
         
         pet.save()
         
+        if pet_image != '/static/images/CAT_DEFAULT.png' and pet_image != '/static/images/DOG_DEFAULT.png':
+            file_extension = pet_image.name.split('.')[-1]
+            new_filename = f"{pet.id}.{file_extension}"
+            old_filename = pet_image.name
+            if " " in old_filename:
+                old_filename = old_filename.replace(" ", "_")
+            os.rename(f"media/pet_images/{old_filename}", f"media/pet_images/{new_filename}")
+            pet.petImage = f"pet_images/{new_filename}"
+            pet.save()
+        
+        if pet_medical_history:
+            file_extension = pet_medical_history.name.split('.')[-1]
+            new_filename = f"{pet.id}.{file_extension}"
+            old_filename = pet_medical_history.name
+            if " " in old_filename:
+                old_filename = old_filename.replace(" ", "_")
+            os.rename(f"media/medical_histories/{old_filename}", f"media/medical_histories/{new_filename}")
+            pet.medicalHistory = f"medical_histories/{new_filename}"
+            pet.save()
+        
         return redirect('pets')
     
     if pet_type == 'D':
@@ -136,10 +157,9 @@ def pet_add(request, pet_type):
     else:
         petType=''
         breeds = None
-        
+    
     
     return render(request, 'pet_add.html', {'breeds': breeds, 'petType': petType})
-
 
 
 @login_required

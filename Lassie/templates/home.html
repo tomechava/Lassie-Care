@@ -16,7 +16,7 @@
               {% csrf_token%}
               <div class="row">
                 <div class="pb-3 col-lg-8 offset-lg-2 col-10 offset-1">
-                  <label for="pet">Select a pet to update their information:</label>
+                  <label for="pet"><i class="fas fa-paw"></i> Pet:</label>
                   <select name="pet" id="pet" class="form-control">
                       <option value="" selected disabled>Select a pet</option>
                       {% for pet in user_pets %}
@@ -27,18 +27,18 @@
               </div>
               <div class="row">
                   <div class="pb-3 offset-lg-2 col-lg-4 col-10 offset-1">
-                      <label for="dailyWater">Water today:</label>
-                      <input type="number" class="form-control" id="dailyWater" name="dailyWater">
+                      <label for="dailyWater"><i class="fas fa-tint"></i> Water:</label>
+                      <input type="number" class="form-control" id="dailyWater" name="dailyWater" required>
                   </div>
-                  <div class="pb-3 col-lg-4 col-10 offset-1">
-                      <label for="dailyFood">Foods today:</label>
-                      <input type="number" class="form-control" id="dailyFood" name="dailyFood">
+                  <div class="pb-3 col-lg-4 offset-lg-0 col-10 offset-1">
+                      <label for="dailyFood"><i class="fas fa-utensils"></i> Food:</label>
+                      <input type="number" class="form-control" id="dailyFood" name="dailyFood" required>
                   </div>
               </div>
               <div class="row">
                   <div class="pb-3 col-lg-8 offset-lg-2 col-10 offset-1">
-                      <label for="dailyWalks">Walks today:</label>
-                      <input type="number" class="form-control" id="dailyWalks" name="dailyWalks">
+                      <label for="dailyWalks"><i class="fas fa-walking"></i> Walks:</label>
+                      <input type="number" class="form-control" id="dailyWalks" name="dailyWalks" required>
                   </div>
               </div>
               <div class="row pb-3">
