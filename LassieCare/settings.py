@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-qp$kvenml0+*@&#m_fsh$)q=c0pajpgbmxvprb4x!hq&624p*5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['LOCALHOST', '44.218.164.50']
 
 
 # Application definition
@@ -138,3 +138,4 @@ LOGIN_REDIRECT_URL = '/home'
 # Media files (user-uploaded files)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+

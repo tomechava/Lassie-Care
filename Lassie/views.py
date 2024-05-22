@@ -30,7 +30,15 @@ def home(request):
         DailyTasks.objects.create(ownerprofile=owner, petprofile=pet, walks=walks, food=food, water=water, datetime=datetime)
         
     user_pets = PetProfile.objects.filter(ownerprofile=request.user.ownerprofile)
-    return render(request, 'home.html', {'user_pets':user_pets})
+    last_5_days_submits = DailyTasks.objects.filter(ownerprofile=request.user.ownerprofile).order_by('-datetime')[:5]
+    if len(last_5_days_submits) > 0:
+        last_5_days_submits = list(last_5_days_submits)
+        last_submitted = last_5_days_submits[0].datetime
+        
+    allowed = True
+    if last_submitted.date() == timezone.now().date():
+        allowed = False
+    return render(request, 'home.html', {'user_pets':user_pets, 'allowed':allowed, 'last_5_days_submits':last_5_days_submits})
 
 def register(request):
     if request.method == 'POST':
