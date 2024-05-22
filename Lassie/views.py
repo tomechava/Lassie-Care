@@ -30,9 +30,9 @@ def home(request):
         DailyTasks.objects.create(ownerprofile=owner, petprofile=pet, walks=walks, food=food, water=water, datetime=datetime)
         
     user_pets = PetProfile.objects.filter(ownerprofile=request.user.ownerprofile)
-    last_5_days_submits = DailyTasks.objects.filter(ownerprofile=request.user.ownerprofile).order_by('-datetime')[:5]
+    last_5_days_submits = DailyTasks.objects.filter(ownerprofile=request.user.ownerprofile).order_by('-datetime')
     if len(last_5_days_submits) > 0:
-        last_5_days_submits = list(last_5_days_submits)
+        last_5_days_submits = list(last_5_days_submits[:5])
         last_submitted = last_5_days_submits[0].datetime
         
     allowed = True
