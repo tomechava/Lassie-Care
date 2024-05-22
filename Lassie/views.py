@@ -34,9 +34,11 @@ def home(request):
     if len(last_5_days_submits) > 0:
         last_5_days_submits = list(last_5_days_submits[:5])
         last_submitted = last_5_days_submits[0].datetime
-        
+    else:
+        last_submitted = None  # Set last_submitted to None if no past submissions
+
     allowed = True
-    if last_submitted.date() == timezone.now().date():
+    if last_submitted is not None and last_submitted.date() == timezone.now().date():
         allowed = False
     return render(request, 'home.html', {'user_pets':user_pets, 'allowed':allowed, 'last_5_days_submits':last_5_days_submits})
 
