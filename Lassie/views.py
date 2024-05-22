@@ -283,6 +283,30 @@ def profile(request):
     return render(request, 'profile.html', {'user_profile': user_profile})
 
 @login_required
+def profile_edit(request):
+    if request.method == 'POST':
+        user_profile = OwnerProfile.objects.get(user=request.user)
+        user_profile.firstName = request.POST.get('name')
+        user_profile.lastName = request.POST.get('lastName')
+        user_profile.address = request.POST.get('address')
+        user_profile.phone_number = request.POST.get('phone')
+        user_profile.gender = request.POST.get('gender')
+        user_profile.birthDate = request.POST.get('birthDate')
+        user_profile.save()
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        user = User.objects.get(username=request.user.username)
+        user.username = username
+        user.email = email
+        user.set_password(user.password)
+        
+        return redirect('profile')
+    
+    user_profile = OwnerProfile.objects.get(user=request.user)
+    return render(request, 'profile_edit.html', {'user_profile': user_profile})
+        
+
+@login_required
 def log_out(request):
     logout(request)
     return redirect('/')

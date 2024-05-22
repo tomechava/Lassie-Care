@@ -35,6 +35,7 @@ urlpatterns = [
     path('pet/<int:pet_id>/edit', LassieViews.pet_edit, name='pet_edit'),       #Edit a pet
     path('pet/<int:pet_id>/delete', LassieViews.pet_delete, name='pet_delete'),      #Delete a pet
     path('profile/', LassieViews.profile, name='profile'),      #View user profile
+    path('profile/edit', LassieViews.profile_edit, name='profile_edit'),      #Edit user profile
     path('login', LoginView.as_view(template_name='login.html'), name="login"),     #Login page
     path('log_out', LassieViews.log_out, name="logout"),    #Logout page   
     path('asklassiechat', ChatbotViews.asklassiechat.as_view(), name='asklassiechat'),    #Chatbot page
